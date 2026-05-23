@@ -1,0 +1,15 @@
+---
+interface Props {
+  width?: number;
+  height?: number;
+  label?: string;
+}
+const { width = 172, height = 47, label = 'The Ledger — home' } = Astro.props;
+---
+<a href="/" class="brand-mark" aria-label={label}>
+  <svg width={width} height={height} viewBox="0 0 148 40" xmlns="http://www.w3.org/2000/svg">
+    <path d="M96 4 L144 4 L144 18" stroke="#0F0E0C" stroke-width="2.5" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+    <path d="M4 22 L4 36 L52 36" stroke="#0F0E0C" stroke-width="2.5" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+    <text x="74" y="26" text-anchor="middle" font-family="'Source Serif 4 Variable', 'Source Serif 4', Georgia, serif" font-size="22" font-weight="400" fill="#0F0E0C" letter-spacing="0.5">ledger</text>
+  </svg>
+</a>

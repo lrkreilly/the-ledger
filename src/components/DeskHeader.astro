@@ -1,0 +1,75 @@
+---
+interface Props {
+  numeral: string;
+  name: string;
+  lens: string;
+  dominantQuestion: string;
+  about: string;
+}
+const { numeral, name, lens, dominantQuestion, about } = Astro.props;
+---
+<header class="desk-header">
+  <div class="container">
+    <p class="desk-header__numeral">{numeral}</p>
+    <h1 class="desk-header__name">{name}</h1>
+    <p class="desk-header__lens">{lens}</p>
+    <p class="desk-header__question">
+      The dominant question: <em>{dominantQuestion}</em>
+    </p>
+    <p class="desk-header__about">{about}</p>
+  </div>
+</header>
+
+<style>
+  .desk-header {
+    padding: 88px 0 72px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .desk-header__numeral {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink-3);
+    margin-bottom: 18px;
+  }
+  .desk-header__name {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(44px, 7vw, 80px);
+    line-height: 1.02;
+    letter-spacing: -0.022em;
+    margin-bottom: 18px;
+    color: var(--ink);
+  }
+  .desk-header__lens {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--ink-3);
+    margin-bottom: 22px;
+  }
+  .desk-header__question {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.4;
+    color: var(--ink);
+    margin-bottom: 18px;
+    max-width: 720px;
+  }
+  .desk-header__question em { font-style: italic; }
+  .desk-header__about {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    max-width: 680px;
+  }
+  @media (max-width: 900px) {
+    .desk-header { padding: 64px 0 56px; }
+    .desk-header__question { font-size: 19px; }
+    .desk-header__about { font-size: 17px; }
+  }
+</style>

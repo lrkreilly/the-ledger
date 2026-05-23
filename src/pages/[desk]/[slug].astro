@@ -1,0 +1,35 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  const desks = await getCollection('desks');
+  return articles.map((article) => {
+    const desk = desks.find((d) => d.data.slug === article.data.desk);
+    if (!desk) throw new Error(`Article ${article.id} references unknown desk ${article.data.desk}`);
+    return {
+      params: { desk: article.data.desk, slug: article.data.slug },
+      props: { article, desk: desk.data },
+    };
+  });
+}
+
+const { article, desk } = Astro.props;
+const { Content } = await render(article);
+---
+<ArticleLayout
+  title={article.data.title}
+  summary={article.data.summary}
+  desk={article.data.desk}
+  deskName={desk.name}
+  deskNumeral={desk.numeral}
+  slug={article.data.slug}
+  author={article.data.author}
+  publishDate={article.data.publishDate}
+  modifiedDate={article.data.modifiedDate}
+  ogImage={article.data.ogImage ?? `/og/${article.data.slug}.png`}
+  paperTrail={article.data.paperTrail}
+>
+  <Content />
+</ArticleLayout>

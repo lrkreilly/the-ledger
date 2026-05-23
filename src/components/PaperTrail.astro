@@ -1,0 +1,150 @@
+---
+interface Update {
+  date: Date;
+  change: string;
+}
+
+interface Props {
+  method: string;
+  sources: string;
+  limits: string;
+  updates?: Update[];
+}
+
+const { method, sources, limits, updates = [] } = Astro.props;
+
+const dateFmt = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+<aside class="paper-trail" aria-label="Paper Trail">
+  <p class="paper-trail__eyebrow">Paper Trail</p>
+  <p class="paper-trail__intro">How this conclusion was reached.</p>
+
+  <dl class="paper-trail__list">
+    <div class="paper-trail__row">
+      <dt>Method</dt>
+      <dd>{method}</dd>
+    </div>
+    <div class="paper-trail__row">
+      <dt>Sources</dt>
+      <dd>{sources}</dd>
+    </div>
+    <div class="paper-trail__row">
+      <dt>Limits</dt>
+      <dd>{limits}</dd>
+    </div>
+  </dl>
+
+  {updates.length > 0 && (
+    <section class="paper-trail__updates">
+      <h2>Updates</h2>
+      <ol>
+        {updates
+          .slice()
+          .sort((a, b) => b.date.getTime() - a.date.getTime())
+          .map((u) => (
+            <li>
+              <time datetime={u.date.toISOString()}>{dateFmt.format(u.date)}</time>
+              <p>{u.change}</p>
+            </li>
+          ))}
+      </ol>
+    </section>
+  )}
+</aside>
+
+<style>
+  .paper-trail {
+    margin: 80px 0 0;
+    padding: 36px 0 0;
+    border-top: 2px solid var(--ink);
+  }
+  .paper-trail__eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .paper-trail__intro {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink-2);
+    margin-bottom: 28px;
+  }
+  .paper-trail__list {
+    display: grid;
+    gap: 18px;
+  }
+  .paper-trail__row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 24px;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .paper-trail__row dt {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-3);
+  }
+  .paper-trail__row dd {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink);
+    margin: 0;
+  }
+  .paper-trail__updates {
+    margin-top: 36px;
+  }
+  .paper-trail__updates h2 {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-3);
+    margin-bottom: 18px;
+  }
+  .paper-trail__updates ol {
+    display: grid;
+    gap: 18px;
+  }
+  .paper-trail__updates li {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 24px;
+    align-items: baseline;
+  }
+  .paper-trail__updates time {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-3);
+  }
+  .paper-trail__updates p {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink);
+    margin: 0;
+  }
+  @media (max-width: 700px) {
+    .paper-trail__row,
+    .paper-trail__updates li {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+  }
+</style>

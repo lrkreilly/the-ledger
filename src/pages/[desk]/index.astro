@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DeskHeader from '../../components/DeskHeader.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const desks = await getCollection('desks');
+  return desks.map((desk) => ({
+    params: { desk: desk.data.slug },
+    props: { desk: desk.data },
+  }));
+}
+
+const { desk } = Astro.props;
+const allArticles = await getCollection('articles');
+const articles = allArticles
+  .filter((a) => a.data.desk === desk.slug)
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
+---
+<BaseLayout
+  title={`${desk.name} — The Ledger`}
+  description={desk.about}
+  trimLeft={desk.name}
+  trimRight={desk.lens}
+>
+  <DeskHeader
+    numeral={desk.numeral}
+    name={desk.name}
+    lens={desk.lens}
+    dominantQuestion={desk.dominantQuestion}
+    about={desk.about}
+  />
+
+  <section class="desk-list">
+    <div class="container">
+      {articles.length === 0 ? (
+        <p class="desk-list__empty">No pieces filed under this desk yet. Forthcoming.</p>
+      ) : (
+        articles.map((a) => (
+          <ArticleCard
+            href={`/${a.data.desk}/${a.data.slug}`}
+            title={a.data.title}
+            summary={a.data.summary}
+            publishDate={a.data.publishDate}
+          />
+        ))
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .desk-list { padding: 56px 0 96px; }
+  .desk-list__empty {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 20px;
+    color: var(--ink-3);
+    padding: 40px 0;
+  }
+</style>

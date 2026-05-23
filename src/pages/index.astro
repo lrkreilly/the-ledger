@@ -1,0 +1,293 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const DESK_ORDER = [
+  'value-and-trade-offs',
+  'home-and-services',
+  'internet-claims',
+  'work-and-standards',
+] as const;
+
+const allDesks = await getCollection('desks');
+const allArticles = await getCollection('articles');
+
+const desks = DESK_ORDER.map((slug) => {
+  const desk = allDesks.find((d) => d.data.slug === slug);
+  if (!desk) throw new Error(`Missing desk metadata for ${slug}`);
+  const pieces = allArticles
+    .filter((a) => a.data.desk === slug)
+    .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
+    .slice(0, 2);
+  return { desk: desk.data, pieces };
+});
+
+const description =
+  'The Ledger is a place where decisions get explained honestly — the trade-offs, limits, hidden costs, and real-world consequences most rankings and quick answers skip.';
+---
+<BaseLayout
+  title="The Ledger — A decision-quality publication"
+  description={description}
+>
+
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow hero__eyebrow">Editorial position</p>
+      <h1 class="hero__line">
+        The Ledger helps people see what a choice <em>really</em> costs after the easy answer stops working.
+      </h1>
+      <p class="hero__support">
+        The Ledger is a place where decisions get explained honestly — the trade-offs, limits, hidden costs, and real-world consequences most rankings and quick answers skip. It does not tell you what to buy, rank, or sell. It helps you understand what you gain, what you give up, and what tends to happen over time.
+      </p>
+    </div>
+  </section>
+
+  <section class="method" aria-label="The method">
+    <div class="container">
+      <div class="method__inner">
+        <p class="eyebrow">The method</p>
+        <div>
+          <p class="method__body">
+            Every conclusion published here shows its working — the assumptions made, the evidence considered, the limits that apply, and the point at which it stops being true. We call this <em>Paper Trail</em>. It is how The Ledger keeps itself honest.
+          </p>
+          <a href="/how-the-ledger-works" class="method__link">Read the method</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="desks" aria-label="Sections">
+    <div class="container">
+      <div class="desks__header">
+        <p class="eyebrow">The desks</p>
+        <p class="desks__intro">
+          Four areas The Ledger writes about — organised by the kind of decision, not the kind of reader.
+        </p>
+      </div>
+
+      <div class="desks__grid">
+        {desks.map(({ desk, pieces }) => (
+          <article class="desk">
+            <p class="desk__numeral">{desk.numeral}</p>
+            <h2 class="desk__name">{desk.name}</h2>
+            <p class="desk__about">{desk.about}</p>
+            <div class="desk__pieces">
+              {pieces.length === 0 ? (
+                <p class="desk__empty">Forthcoming.</p>
+              ) : (
+                pieces.map((piece) => (
+                  <a href={`/${piece.data.desk}/${piece.data.slug}`}>{piece.data.title}</a>
+                ))
+              )}
+            </div>
+            <a href={`/${desk.slug}`} class="desk__more">View this desk</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="statement" aria-label="Editorial statement">
+    <div class="container">
+      <p>"The Ledger publishes when there is something worth saying — not because a calendar demands it."</p>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: 88px 0 104px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero__eyebrow { margin-bottom: 36px; }
+  .hero__line {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1.05;
+    letter-spacing: -0.018em;
+    max-width: 980px;
+    margin-bottom: 44px;
+    color: var(--ink);
+  }
+  .hero__line em { font-style: italic; font-weight: 400; }
+  .hero__support {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    max-width: 700px;
+  }
+
+  .method {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .method__inner {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .method__body {
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--ink);
+    max-width: 640px;
+  }
+  .method__body em { font-style: italic; }
+  .method__link {
+    display: inline-block;
+    margin-top: 22px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 3px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .method__link:hover { color: var(--accent); border-color: var(--accent); }
+
+  .desks { padding: 88px 0 96px; }
+  .desks__header {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 64px;
+    align-items: baseline;
+    margin-bottom: 56px;
+  }
+  .desks__intro {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    max-width: 560px;
+  }
+  .desks__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px 72px;
+  }
+  .desk { position: relative; }
+  .desk__numeral {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 15px;
+    color: var(--ink-3);
+    margin-bottom: 14px;
+    letter-spacing: 0.02em;
+  }
+  .desk__name {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
+  .desk__about {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin-bottom: 28px;
+    max-width: 420px;
+  }
+  .desk__pieces {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-top: 1px solid var(--rule);
+    padding-top: 26px;
+    counter-reset: piece;
+  }
+  .desk__empty {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink-3);
+  }
+  .desk__pieces a {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--ink);
+    transition: color 0.15s;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    counter-increment: piece;
+  }
+  .desk__pieces a::before {
+    content: counter(piece, decimal-leading-zero);
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink-3);
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+    min-width: 22px;
+    line-height: 1.9;
+  }
+  .desk__pieces a:hover { color: var(--accent); }
+  .desk__more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 24px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-2);
+    transition: color 0.15s, gap 0.15s;
+  }
+  .desk__more:hover { color: var(--ink); gap: 12px; }
+  .desk__more::after {
+    content: '→';
+    font-family: var(--serif);
+    font-size: 14px;
+  }
+
+  .statement {
+    border-top: 1px solid var(--rule);
+    padding: 80px 0;
+    text-align: center;
+  }
+  .statement p {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.35;
+    color: var(--ink);
+    max-width: 780px;
+    margin: 0 auto;
+    letter-spacing: -0.005em;
+  }
+
+  @media (max-width: 900px) {
+    .hero { padding: 80px 0 72px; }
+    .method__inner,
+    .desks__header { grid-template-columns: 1fr; gap: 24px; }
+    .desks__grid { grid-template-columns: 1fr; gap: 56px; }
+    .statement { padding: 60px 0; }
+  }
+  @media (max-width: 480px) {
+    .hero__support { font-size: 18px; }
+    .desk__name { font-size: 26px; }
+    .desk__pieces a { font-size: 17px; }
+  }
+</style>

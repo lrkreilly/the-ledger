@@ -1,0 +1,27 @@
+---
+import BrandMark from './BrandMark.astro';
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__top">
+      <div class="site-footer__brand">
+        <BrandMark width={100} height={28} />
+        <span class="site-footer__tagline">A decision-quality publication</span>
+      </div>
+
+      <nav class="site-footer__nav" aria-label="Footer">
+        <a href="/value-and-trade-offs">Value &amp; Trade-offs</a>
+        <a href="/home-and-services">Home &amp; Services</a>
+        <a href="/internet-claims">Internet Claims</a>
+        <a href="/work-and-standards">Work &amp; Standards</a>
+        <a href="/how-the-ledger-works">How It Works</a>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+
+    <div class="site-footer__bottom">
+      <p class="site-footer__credit">The Ledger is written by the people behind Spruce.</p>
+      <p class="site-footer__copy">© Ledger · MMXXVI</p>
+    </div>
+  </div>
+</footer>

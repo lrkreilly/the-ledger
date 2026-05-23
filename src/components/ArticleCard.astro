@@ -1,0 +1,91 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  summary: string;
+  publishDate: Date;
+  deskName?: string;
+  numeral?: string;
+}
+const { href, title, summary, publishDate, deskName, numeral } = Astro.props;
+
+const dateFmt = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+<article class="article-card">
+  <div class="article-card__meta">
+    {numeral && <span class="article-card__numeral">{numeral}</span>}
+    <time datetime={publishDate.toISOString()}>{dateFmt.format(publishDate)}</time>
+    {deskName && <><span aria-hidden="true">·</span><span>{deskName}</span></>}
+  </div>
+  <h2 class="article-card__title">
+    <a href={href}>{title}</a>
+  </h2>
+  <p class="article-card__summary">{summary}</p>
+  <a href={href} class="article-card__more">Read piece</a>
+</article>
+
+<style>
+  .article-card {
+    padding: 36px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .article-card:last-child { border-bottom: 0; }
+  .article-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: baseline;
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-3);
+    margin-bottom: 14px;
+  }
+  .article-card__numeral {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--ink-3);
+  }
+  .article-card__title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(26px, 3.4vw, 36px);
+    line-height: 1.12;
+    letter-spacing: -0.012em;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .article-card__title a { transition: color 0.15s; }
+  .article-card__title a:hover { color: var(--accent); }
+  .article-card__summary {
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    max-width: 680px;
+    margin-bottom: 18px;
+  }
+  .article-card__more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-2);
+    transition: color 0.15s, gap 0.15s;
+  }
+  .article-card__more:hover { color: var(--ink); gap: 12px; }
+  .article-card__more::after { content: '→'; font-family: var(--serif); font-size: 14px; }
+</style>

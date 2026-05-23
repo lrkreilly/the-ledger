@@ -1,0 +1,48 @@
+---
+import BrandMark from './BrandMark.astro';
+
+interface Props {
+  trimLeft?: string;
+  trimRight?: string;
+}
+const { trimLeft = 'A decision-quality publication', trimRight = 'Est. MMXXVI' } = Astro.props;
+---
+<header class="site-header">
+  <div class="container">
+    <div class="site-header__bar">
+      <BrandMark />
+
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+      <nav class="nav-primary" id="primary-nav" aria-label="Primary">
+        <a href="/value-and-trade-offs">Value &amp; Trade-offs</a>
+        <a href="/home-and-services">Home &amp; Services</a>
+        <a href="/internet-claims">Internet Claims</a>
+        <a href="/work-and-standards">Work &amp; Standards</a>
+        <a href="/how-the-ledger-works">How It Works</a>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+
+    <div class="masthead-trim">
+      <span class="masthead-trim__left">{trimLeft}</span>
+      <span class="masthead-trim__right">{trimRight}</span>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('.nav-toggle');
+  const nav = document.getElementById('primary-nav');
+  if (btn && nav) {
+    btn.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', String(isOpen));
+      btn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+  }
+</script>

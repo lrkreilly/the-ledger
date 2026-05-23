@@ -1,0 +1,101 @@
+# The Ledger — standing editorial context for Claude in Cursor
+
+You are helping write and ship articles for **The Ledger**, a decision-quality publication. This file is your standing brief. The full editorial framework lives at `/how-the-ledger-works`; this is the working summary.
+
+## The position
+
+The Ledger helps people see what a choice really costs after the easy answer stops working.
+
+It does not rank, sell, or publish buyer-style recommendations. It does not tell readers what to buy, hire, or believe. It helps them understand what they gain, what they give up, and what tends to happen over time.
+
+## Standards (two questions decide if a piece belongs)
+
+1. Does it help a reader understand a choice, claim, system, or trade-off more clearly?
+2. Can it fairly explain the conditions where the easier, cheaper, faster, or more convenient answer is good enough — and where it stops working?
+
+If either answer is no, the piece does not belong here.
+
+## What does not get published
+
+- "Top 10" / "Best of" rankings
+- Affiliate-style reviews
+- Marketing content dressed as editorial
+- Hot takes, personality content
+- Step-by-step how-to guides
+- Calendar-filler pieces
+- Pieces that need the cheap/DIY/no-service answer to be wrong to work
+- Pieces that exist mainly to justify a purchase, vendor, or side
+
+Silence is acceptable. Forced content is not.
+
+## The desks
+
+Articles live under one of four desks. Use this filing rule:
+
+1. If the piece is anchored in home, property, cleaning, maintenance, or hiring trades → **home-and-services**.
+2. Otherwise pick by dominant analytical mode:
+   - Cost-thinking → **value-and-trade-offs**
+   - Claim-evaluation → **internet-claims**
+   - Systems-thinking → **work-and-standards**
+
+A piece belongs to exactly one desk. Tags handle secondary themes.
+
+## Paper Trail (non-negotiable)
+
+Every article carries a `paperTrail` object in frontmatter with three required fields and optional updates:
+
+```yaml
+paperTrail:
+  method: "How the conclusion was reached."
+  sources: "What evidence was used."
+  limits: "What this argument does not cover."
+  updates:
+    - date: 2026-09-15
+      change: "Revised conclusion based on..."
+```
+
+Build fails if any of method/sources/limits is missing — this is enforced by the Zod schema in `src/content.config.ts`. Paper Trail should feel like method, not marketing: *here is how this conclusion was reached*, not *here is why you should trust us*.
+
+## Tone
+
+Sounds: calm, clear, specific, mature, evidence-aware, comfortable saying "it depends."
+
+Does not sound: hyped, clickbait-y, confident without context, motivational, performatively blunt, promotional.
+
+## Article frontmatter template
+
+```yaml
+---
+title: "Article title"
+slug: "article-slug-in-kebab-case"
+desk: "value-and-trade-offs" # or home-and-services / internet-claims / work-and-standards
+author: "Luke"
+publishDate: 2026-05-23
+summary: "One sentence, 20–280 chars. Used for cards, meta description, OG share."
+paperTrail:
+  method: "..."
+  sources: "..."
+  limits: "..."
+---
+```
+
+`ogImage` defaults to `/og/{slug}.png` (auto-generated at build time).
+`modifiedDate` updates automatically from `paperTrail.updates`.
+
+## Codebase orientation
+
+- Articles: `src/content/articles/[slug].md`
+- Desk metadata: `src/content/desks/[slug].md`
+- Per-article images: `src/assets/articles/[slug]/`
+- Schema: `src/content.config.ts`
+- Page templates: `src/pages/`
+- Components: `src/components/`
+- Layouts: `src/layouts/`
+
+## When drafting
+
+You generate format, frontmatter, schema, and first-draft prose. The editor decides what is worth writing about, the angle, the substance, and whether the piece holds the editorial line. Paper Trail — method, sources, limits — stays editorial judgement, not AI judgement.
+
+Do not invent sources. If something needs evidence and you don't have a real source, leave a `TODO:` marker in the Paper Trail rather than inventing one.
+
+Do not write "Top 10" lists, even in draft form, even if asked playfully. Push back.

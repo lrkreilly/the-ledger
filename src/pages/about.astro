@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const description =
+  'The Ledger is a decision-quality publication written by the people behind Spruce. Independent, slow, and uninterested in telling you what to buy.';
+---
+<BaseLayout
+  title="About — The Ledger"
+  description={description}
+  trimLeft="About"
+  trimRight="MMXXVI"
+>
+  <section class="about">
+    <div class="container">
+      <p class="eyebrow">About</p>
+      <h1 class="about__title">A publication, not a content channel.</h1>
+
+      <div class="about__body">
+        <p>The Ledger is a decision-quality publication. It exists to help readers see what a choice really costs — the trade-offs, hidden costs, limits, and real-world consequences that rankings, reviews, and quick answers tend to skip.</p>
+
+        <p>It is independent, slow, and uninterested in telling anyone what to buy. It publishes when there is something worth saying, and stays quiet when there isn't.</p>
+
+        <h2>Who writes it</h2>
+        <p>The Ledger is written by the people behind Spruce. Where a writer has a relevant connection to a subject, it is disclosed plainly on the piece — never as a selling point.</p>
+
+        <h2>How it decides what to publish</h2>
+        <p>Every piece is filed against a single editorial framework — the position, the desks, the filing rule, the Paper Trail requirement, and the tone. The framework is published in full so readers can see the rules the publication holds itself to.</p>
+
+        <p><a href="/how-the-ledger-works" class="about__link">Read the editorial framework →</a></p>
+
+        <h2>How to reach The Ledger</h2>
+        <p>Email: <a href="mailto:hello@theledger.media" class="about__link">hello@theledger.media</a>. Tips, corrections, and disagreements are welcome. Pitches and "Top 10" submissions are not.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about { padding: 88px 0 96px; }
+  .about__title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 32px 0 48px;
+    max-width: 900px;
+    color: var(--ink);
+  }
+  .about__body {
+    max-width: 720px;
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+  .about__body p { margin-bottom: 22px; }
+  .about__body h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.25;
+    margin: 48px 0 16px;
+    color: var(--ink);
+  }
+  .about__link {
+    color: var(--ink);
+    border-bottom: 1px solid var(--rule);
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .about__link:hover { color: var(--accent); border-color: var(--accent); }
+
+  @media (max-width: 900px) {
+    .about { padding: 64px 0 72px; }
+    .about__body { font-size: 18px; }
+  }
+</style>
