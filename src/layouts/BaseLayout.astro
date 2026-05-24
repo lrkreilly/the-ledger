@@ -1,6 +1,8 @@
 ---
 import sourceSerifLatinNormal from '@fontsource-variable/source-serif-4/files/source-serif-4-latin-standard-normal.woff2?url';
 import sourceSerifLatinItalic from '@fontsource-variable/source-serif-4/files/source-serif-4-latin-standard-italic.woff2?url';
+import interLatin400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
+import interLatin500 from '@fontsource/inter/files/inter-latin-500-normal.woff2?url';
 
 import '../styles/global.css';
 import Header from '../components/Header.astro';
@@ -64,6 +66,22 @@ const jsonLdBlocks = jsonLd
   <link
     rel="preload"
     href={sourceSerifLatinItalic}
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+
+  <link
+    rel="preload"
+    href={interLatin400}
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+
+  <link
+    rel="preload"
+    href={interLatin500}
     as="font"
     type="font/woff2"
     crossorigin
