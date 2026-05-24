@@ -53,12 +53,14 @@ const description =
         <section class="doc-section" id="standards">
           <p class="doc-section__numeral">II.</p>
           <h1>Editorial standards</h1>
-          <p>Two questions decide whether a piece belongs in The Ledger.</p>
-          <ol>
-            <li>Does it help a reader understand a choice, claim, system, or trade-off more clearly?</li>
-            <li>Can it fairly explain the conditions where the easier, cheaper, faster, or more convenient answer is good enough — and where it stops working?</li>
-          </ol>
-          <p>If the answer to either is no, the piece does not belong here.</p>
+
+          <aside class="doc-filter" aria-label="Editorial filter">
+            <p class="doc-filter__intro">A piece belongs in The Ledger if it can answer yes to both:</p>
+            <p class="doc-filter__question"><em>Does it help a reader understand a choice, claim, system, or trade-off more clearly?</em></p>
+            <p class="doc-filter__question"><em>Can it fairly explain the conditions where the easier, cheaper, faster, or more convenient answer is good enough — and where it stops working?</em></p>
+            <p class="doc-filter__close">If the answer to either is no, the piece does not belong here.</p>
+          </aside>
+
           <h3>What does not get published</h3>
           <ul>
             <li>"Top 10" or "Best of" rankings</li>
@@ -167,10 +169,20 @@ const description =
 
         <section class="doc-section" id="corrections">
           <p class="doc-section__numeral">VIII.</p>
-          <h1>Corrections</h1>
-          <p>The Ledger may get things wrong. When that happens, the correction is made on the original piece, dated and described.</p>
-          <p>Substantive changes — new evidence, revised conclusions, retracted claims — are noted in a Paper Trail addendum at the bottom of the piece. Typos and small clarifications are corrected silently.</p>
-          <p>If a piece becomes wrong enough that it should no longer stand, it is removed, and the page records what was there and why.</p>
+          <h1>Corrections and retractions</h1>
+          <p>The Ledger may get things wrong. When it does, the correction sits on the original piece — not buried, not quietly fixed, and never on a separate page that the original doesn't link to.</p>
+          <p>Three kinds of change are handled three different ways.</p>
+
+          <h2>Silent edits</h2>
+          <p>Typos, grammar, broken links replaced with the current equivalent, formatting, and prose tightening that doesn't alter the argument. These are corrected without notice. They don't change what the piece is saying.</p>
+
+          <h2>Logged updates</h2>
+          <p>Substantive editorial changes — the conclusion shifts, a claim is removed or weakened, new evidence is added, the scope narrows or widens, the basis of the argument changes. These are recorded as a Paper Trail update at the bottom of the piece, with the date and a description of what changed. The article's modified date and byline update automatically. When in doubt, it's logged.</p>
+
+          <h2>Retractions</h2>
+          <p>When a piece is wrong enough that it should no longer stand, it is formally retracted — not deleted. The URL stays live. The body is replaced by a retraction notice naming the date and the reason. The original Paper Trail remains visible, so a reader can see how the now-withdrawn conclusion was reached. The piece is removed from the homepage, the desk index, and the RSS feed.</p>
+
+          <p>Retraction is a recorded act, not a deletion. A reader arriving from an old link or citation lands on a real page that tells them the story.</p>
         </section>
 
       </article>
@@ -379,6 +391,50 @@ const description =
     border-left: 2px solid var(--accent);
     padding: 4px 0 4px 28px;
     margin: 36px 0;
+  }
+
+  /* The definitive editorial test — pulled out of section II as a visual
+     anchor so it reads as a rule, not as more paragraph copy. */
+  .doc-filter {
+    margin: 32px 0 40px;
+    padding: 28px 32px;
+    border-left: 3px solid var(--accent);
+    background: var(--paper-2);
+  }
+  .doc-filter__intro {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0 0 18px;
+  }
+  .doc-filter__question {
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.45;
+    color: var(--ink);
+    margin: 0 0 14px;
+    padding-left: 22px;
+    position: relative;
+  }
+  .doc-filter__question::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    top: -2px;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 22px;
+  }
+  .doc-filter__question em {
+    font-style: italic;
+  }
+  .doc-filter__close {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    margin: 18px 0 0;
   }
 
   @media (max-width: 1000px) {
