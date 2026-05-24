@@ -1,5 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.theledger.media" }],
+      "destination": "https://theledger.media/$1",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*).md",

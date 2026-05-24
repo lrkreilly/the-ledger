@@ -195,7 +195,7 @@ const doc = new Document({
       new Paragraph({
         spacing: { after: 240 },
         children: [new TextRun({
-          text: 'Version 2.1  ·  Basis terminology, retraction flag, editorial conventions',
+          text: 'Version 2.2  ·  Basis array, Limits prose, retraction flag, format-strain principle',
           font: FONT_SANS, size: 18, color: INK_3, characterSpacing: 80, bold: true,
         })],
       }),
@@ -278,6 +278,10 @@ Article body in markdown.`),
       ...codeBlock(`basis:
   - label: "Argument from first principles."`),
       callout('Rule', "The absence of external evidence is never accidental on The Ledger. It’s always a positive claim. Empty basis won’t compile."),
+
+      h2('Limits is held as continuous prose, by design'),
+      p('Unlike Basis, Limits is a single string — not an array. Multiple limits go in one continuous qualifying paragraph, not separate items. If the prose form breaks down on a piece, scope or split the piece — don’t fragment the field.'),
+      p('The shapes differ because the failure modes differ. Basis is an array because its failure mode is gesturing — a paragraph lets a writer wave at sourcing without committing. Enumeration exposes hand-waving. Limits’ failure mode is omission — the writer’s risk is forgetting to qualify, not over-qualifying vaguely. A list format doesn’t surface what’s missing; it just rearranges what’s present. Continuous prose is what holds the envelope shape of an argument, because qualifying connective tissue ("less useful for…", "geographic scope is…") is what makes limits read as limits at all.'),
 
       // 4. Updates and what counts
       h1('4. Updates — what counts as substantive'),
@@ -370,6 +374,11 @@ Article body in markdown.`),
 
       h2('Removing a piece entirely (rare)'),
       p("Almost never the right move. Retraction is the formal pattern; outright file deletion is reserved for edge cases like legal takedown or a piece that should never have shipped. The framework prefers visible withdrawal over silent removal."),
+
+      // Format-strain principle
+      h1('Format-strain is a signal about the piece, not the schema'),
+      p("Generalises beyond Limits. When any field feels cramped on a particular piece — Limits won’t fit a paragraph, Basis has more entries than reads cleanly, the summary refuses to land under 280 chars, the title needs a subtitle to make sense — the first question is whether the piece is overclaiming, drifting from its desk, or trying to do too much. Scope or split the piece before extending the schema. Every field is an obligation; adding shape never makes editorial work less."),
+      callout('Rule', "When the format starts straining, look at the piece first. The schema is the floor; the piece is the variable."),
 
       // The principle
       h1('The principle behind it'),
