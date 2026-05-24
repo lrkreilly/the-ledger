@@ -7,7 +7,12 @@ publishDate: 2026-05-09
 summary: "\"Top 10\" lists exist because they rank — and ranking is what search engines, affiliate programmes, and tired readers all reward. The format is the product. The contents are incidental."
 paperTrail:
   method: "Examines the economic and structural incentives behind ranking content, rather than the quality of any individual list. Frames \"Top 10\" as a content format with predictable behaviours."
-  sources: "Publicly documented affiliate programme structures (Amazon Associates, generic CPS models), search engine results page behaviour, and standard digital publishing economics. No insider data."
+  sources:
+    - label: "Amazon Associates programme structure (publicly documented commission model)."
+      url: "https://affiliate-program.amazon.com/help/operating/policies"
+    - label: "Generic CPS / affiliate commission models across mainstream programmes."
+    - label: "Search engine results page behaviour for high-commercial-intent queries."
+    - label: "Argument from first principles on format incentives. No insider publishing data."
   limits: "Describes the dominant pattern, not every instance. Some ranked lists are produced honestly with declared methodology and no affiliate structure. The pattern is the norm; the exceptions exist."
   updates: []
 ---

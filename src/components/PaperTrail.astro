@@ -4,9 +4,14 @@ interface Update {
   change: string;
 }
 
+interface Source {
+  label: string;
+  url?: string;
+}
+
 interface Props {
   method: string;
-  sources: string;
+  sources: Source[];
   limits: string;
   updates?: Update[];
 }
@@ -30,7 +35,19 @@ const dateFmt = new Intl.DateTimeFormat('en-GB', {
     </div>
     <div class="paper-trail__row">
       <dt>Sources</dt>
-      <dd>{sources}</dd>
+      <dd>
+        <ul class="paper-trail__sources">
+          {sources.map((s) => (
+            <li>
+              {s.url ? (
+                <a href={s.url} rel="noopener" target="_blank">{s.label}</a>
+              ) : (
+                <span>{s.label}</span>
+              )}
+            </li>
+          ))}
+        </ul>
+      </dd>
     </div>
     <div class="paper-trail__row">
       <dt>Limits</dt>
@@ -104,6 +121,33 @@ const dateFmt = new Intl.DateTimeFormat('en-GB', {
     line-height: 1.55;
     color: var(--ink);
     margin: 0;
+  }
+  .paper-trail__sources {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+  }
+  .paper-trail__sources li {
+    position: relative;
+    padding-left: 18px;
+  }
+  .paper-trail__sources li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--ink-3);
+    font-weight: 600;
+  }
+  .paper-trail__sources a {
+    color: var(--ink);
+    border-bottom: 1px solid var(--rule);
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .paper-trail__sources a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
   }
   .paper-trail__updates {
     margin-top: 36px;

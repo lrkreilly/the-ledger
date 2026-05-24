@@ -20,8 +20,12 @@ export const GET: APIRoute = async ({ site }) => {
   const desks = await getCollection('desks');
   const articles = await getCollection('articles');
 
+  // Retracted articles are deliberately excluded — llms.txt is the reading
+  // list AI ingestors use to find canonical content. Retracted pieces still
+  // resolve at their URL with a formal retraction notice, but they shouldn't
+  // be recommended for citation.
   const sortedArticles = articles
-    .slice()
+    .filter((article) => !article.data.retracted)
     .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
 
   const lines: string[] = [];

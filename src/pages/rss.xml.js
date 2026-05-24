@@ -3,9 +3,9 @@ import { getCollection } from 'astro:content';
 
 export async function GET(context) {
   const articles = await getCollection('articles');
-  const sorted = articles.sort(
-    (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
-  );
+  const sorted = articles
+    .filter((article) => !article.data.retracted)
+    .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
 
   return rss({
     title: 'The Ledger',

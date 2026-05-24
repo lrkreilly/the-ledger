@@ -16,7 +16,7 @@ const desks = DESK_ORDER.map((slug) => {
   const desk = allDesks.find((d) => d.data.slug === slug);
   if (!desk) throw new Error(`Missing desk metadata for ${slug}`);
   const pieces = allArticles
-    .filter((a) => a.data.desk === slug)
+    .filter((a) => a.data.desk === slug && !a.data.retracted)
     .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
     .slice(0, 2);
   return { desk: desk.data, pieces };

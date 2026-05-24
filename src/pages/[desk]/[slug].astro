@@ -30,6 +30,7 @@ const { Content } = await render(article);
   modifiedDate={article.data.modifiedDate}
   ogImage={article.data.ogImage ?? `/og/${article.data.slug}.png`}
   paperTrail={article.data.paperTrail}
+  retracted={article.data.retracted}
 >
   <Content />
 </ArticleLayout>

@@ -33,7 +33,18 @@ const articles = defineCollection({
     ogImage: z.string().optional(),
     paperTrail: z.object({
       method: z.string().min(1, 'Paper Trail requires a method.'),
-      sources: z.string().min(1, 'Paper Trail requires sources.'),
+      // sources is an array — enumeration over gesturing. For reasoning pieces
+      // that argue from first principles, the array must still contain one
+      // explicit entry declaring that stance (see .cursorrules). The array
+      // can never be empty; absence of evidence must be a positive claim.
+      sources: z
+        .array(
+          z.object({
+            label: z.string().min(1, 'Each source needs a label.'),
+            url: z.string().url().optional(),
+          }),
+        )
+        .min(1, 'Paper Trail requires at least one source entry.'),
       limits: z.string().min(1, 'Paper Trail requires limits.'),
       updates: z
         .array(
@@ -44,6 +55,17 @@ const articles = defineCollection({
         )
         .default([]),
     }),
+    // When set, the article is treated as retracted: body is hidden, a
+    // retraction notice replaces it, JSON-LD switches to RetractedArticle,
+    // and the piece is removed from listings (desk index, homepage cards,
+    // RSS, llms.txt). The URL stays live; the original Paper Trail is still
+    // shown so readers see what the piece argued and why it's retracted.
+    retracted: z
+      .object({
+        date: z.coerce.date(),
+        reason: z.string().min(1, 'A retracted article requires a reason.'),
+      })
+      .optional(),
   }),
 });
 

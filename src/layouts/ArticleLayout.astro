@@ -7,6 +7,16 @@ interface Update {
   change: string;
 }
 
+interface Source {
+  label: string;
+  url?: string;
+}
+
+interface Retraction {
+  date: Date;
+  reason: string;
+}
+
 interface Props {
   title: string;
   summary: string;
@@ -20,10 +30,11 @@ interface Props {
   ogImage?: string;
   paperTrail: {
     method: string;
-    sources: string;
+    sources: Source[];
     limits: string;
     updates: Update[];
   };
+  retracted?: Retraction;
 }
 
 const {
@@ -38,6 +49,7 @@ const {
   modifiedDate,
   ogImage,
   paperTrail,
+  retracted,
 } = Astro.props;
 
 const dateFmt = new Intl.DateTimeFormat('en-GB', {
@@ -46,17 +58,23 @@ const dateFmt = new Intl.DateTimeFormat('en-GB', {
   year: 'numeric',
 });
 
-const effectiveModified =
-  paperTrail.updates.length > 0
-    ? paperTrail.updates.reduce((latest, u) => (u.date > latest ? u.date : latest), publishDate)
-    : modifiedDate ?? publishDate;
+// Retraction date counts as the most-recent edit if it's later than
+// anything else; this keeps dateModified in JSON-LD honest.
+const updateDates: Date[] = paperTrail.updates.map((u) => u.date);
+if (retracted) updateDates.push(retracted.date);
+const effectiveModified = updateDates.length > 0
+  ? updateDates.reduce((latest, d) => (d > latest ? d : latest), publishDate)
+  : modifiedDate ?? publishDate;
 
 const canonicalUrl = new URL(`/${desk}/${slug}/`, Astro.site).href;
 const siteUrl = Astro.site?.href ?? 'https://theledger.media/';
 
 const articleJsonLd: Record<string, unknown> = {
   '@context': 'https://schema.org',
-  '@type': 'Article',
+  // Retracted pieces use schema.org's RetractedArticle type — a recognised
+  // signal for editorial retraction that Google and AI ingestors handle
+  // distinctly from a live Article.
+  '@type': retracted ? 'RetractedArticle' : 'Article',
   headline: title,
   description: summary,
   datePublished: publishDate.toISOString(),
@@ -79,6 +97,17 @@ if (paperTrail.updates.length > 0) {
   }));
 }
 
+if (retracted) {
+  articleJsonLd.retractionDate = retracted.date.toISOString();
+  articleJsonLd.retractionReason = retracted.reason;
+}
+
+const dateFmtRetraction = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -98,7 +127,7 @@ const breadcrumbJsonLd = {
   trimRight={dateFmt.format(publishDate)}
   jsonLd={[articleJsonLd, breadcrumbJsonLd]}
 >
-  <article class="article">
+  <article class="article" data-retracted={retracted ? 'true' : undefined}>
     <header class="article__header">
       <div class="container">
         <nav class="article__crumbs" aria-label="Breadcrumb">
@@ -106,14 +135,20 @@ const breadcrumbJsonLd = {
           <span aria-hidden="true">·</span>
           <a href={`/${desk}`}>{deskName}</a>
         </nav>
-        <p class="article__numeral">{deskNumeral}</p>
+        {retracted && <p class="article__retracted-eyebrow">Retracted</p>}
+        {!retracted && <p class="article__numeral">{deskNumeral}</p>}
         <h1 class="article__title">{title}</h1>
         <p class="article__standfirst">{summary}</p>
         <div class="article__meta">
           <span>By {author}</span>
           <span aria-hidden="true">·</span>
           <time datetime={publishDate.toISOString()}>{dateFmt.format(publishDate)}</time>
-          {effectiveModified.getTime() !== publishDate.getTime() && (
+          {retracted ? (
+            <>
+              <span aria-hidden="true">·</span>
+              <span>Retracted <time datetime={retracted.date.toISOString()}>{dateFmt.format(retracted.date)}</time></span>
+            </>
+          ) : effectiveModified.getTime() !== publishDate.getTime() && (
             <>
               <span aria-hidden="true">·</span>
               <span>Updated <time datetime={effectiveModified.toISOString()}>{dateFmt.format(effectiveModified)}</time></span>
@@ -126,7 +161,21 @@ const breadcrumbJsonLd = {
     <div class="article__body">
       <div class="container">
         <div class="article__prose">
-          <slot />
+          {retracted ? (
+            <aside class="article__retraction" aria-label="Retraction notice">
+              <p class="article__retraction-label">Retraction notice</p>
+              <p class="article__retraction-lead">
+                This piece was retracted on <time datetime={retracted.date.toISOString()}>{dateFmtRetraction.format(retracted.date)}</time>.
+                The original argument is no longer available because The Ledger no longer stands behind it.
+              </p>
+              <p class="article__retraction-reason">{retracted.reason}</p>
+              <p class="article__retraction-footer">
+                The original Paper Trail is preserved below so readers can see how the retracted conclusion was reached.
+              </p>
+            </aside>
+          ) : (
+            <slot />
+          )}
           <PaperTrail
             method={paperTrail.method}
             sources={paperTrail.sources}
@@ -287,9 +336,64 @@ const breadcrumbJsonLd = {
     color: var(--ink);
   }
 
+  /* Retraction state — overrides above when data-retracted is set */
+  .article[data-retracted] .article__title,
+  .article[data-retracted] .article__standfirst {
+    color: var(--ink-3);
+    text-decoration: line-through;
+    text-decoration-color: var(--rule);
+    text-decoration-thickness: 1px;
+  }
+  .article__retracted-eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+  .article__retraction {
+    margin: 16px 0 8px;
+    padding: 32px 0;
+    border-top: 2px solid var(--accent);
+    border-bottom: 1px solid var(--rule);
+  }
+  .article__retraction-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .article__retraction-lead {
+    font-family: var(--serif);
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0 0 18px;
+  }
+  .article__retraction-reason {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin: 0 0 18px;
+  }
+  .article__retraction-footer {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink-3);
+    margin: 0;
+  }
+
   @media (max-width: 900px) {
     .article__header { padding: 56px 0 44px; }
     .article__body { padding: 48px 0 72px; }
     .article__prose { font-size: 18px; }
+    .article__retraction-lead { font-size: 18px; }
   }
 </style>
