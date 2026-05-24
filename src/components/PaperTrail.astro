@@ -143,12 +143,15 @@ const dateFmt = new Intl.DateTimeFormat('en-GB', {
   }
   .paper-trail__basis a {
     color: var(--ink);
-    border-bottom: 1px solid var(--rule);
-    transition: color 0.15s, border-color 0.15s;
+    text-decoration: underline;
+    text-decoration-color: var(--rule);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color 0.15s, text-decoration-color 0.15s;
   }
   .paper-trail__basis a:hover {
     color: var(--accent);
-    border-color: var(--accent);
+    text-decoration-color: var(--accent);
   }
   .paper-trail__updates {
     margin-top: 28px;
@@ -165,12 +168,21 @@ const dateFmt = new Intl.DateTimeFormat('en-GB', {
   .paper-trail__updates ol {
     display: grid;
     gap: 12px;
+    list-style: none;
+    counter-reset: none;
+    padding: 0;
+    margin: 0;
   }
   .paper-trail__updates li {
     display: grid;
     grid-template-columns: 140px 1fr;
     gap: 24px;
     align-items: baseline;
+    padding-left: 0;
+  }
+  /* Override the prose ol counter that would otherwise bleed in. */
+  .paper-trail__updates li::before {
+    content: none;
   }
   .paper-trail__updates time {
     font-family: var(--serif);

@@ -73,6 +73,14 @@ The field is called **basis**, not "sources." Many Ledger pieces rest on a mix o
 
 Each entry should be specific enough that a reader could in principle understand what it is. "Public guidance from trade associations" is acceptable. "My experience" is not — if a piece rests on personal experience, name what kind (e.g., "Operations work across N home-services contractors over X years").
 
+**Exemplar.** A good Basis entry can declare a basis and admit its limit in the same sentence:
+
+> *"Reasoned analysis of the incentives created by ranking formats. No insider publishing data."*
+
+That's the framework modelling itself — the entry tells the reader what the piece rests on (reasoned analysis) and what it doesn't (insider data), inside the entry itself. Aim for this when the basis type warrants it.
+
+**Limits is a string, deliberately.** Unlike Basis, Limits is not an array. The failure mode for Limits is omission, not gesturing — the writer's risk is forgetting to qualify, not over-qualifying vaguely. A single qualifying paragraph handles multiple distinct limits well: *"Applies most clearly to durable goods with meaningful failure modes. Less useful for consumables. Geographic scope is UK/AU; pricing patterns differ in US markets."* If a piece genuinely needs more limits than fit in one paragraph, the piece is overclaiming and should be scoped, not the schema extended.
+
 ### Reasoning pieces (arguments from first principles)
 
 Some Ledger pieces argue from definitions, trade-offs, or framework reasoning rather than from external evidence or observation. The framework allows this — but the choice must be **declared**, not hidden.
