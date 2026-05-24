@@ -7,10 +7,10 @@ publishDate: 2026-05-02
 summary: "Undefined standards do not stay undefined. They get filled in — quietly, inconsistently, and by whoever happens to be doing the work that day. The bill arrives later."
 paperTrail:
   method: "Treats ambiguity as a cost centre, not a neutral state. Frames the absence of a written standard as a decision to delegate the standard to the moment of execution."
-  sources:
+  basis:
     - label: "Operations literature on standard work and visual management (lean / Toyota Production System tradition)."
     - label: "Service-quality variance literature on standardisation, SOPs, and operational consistency."
-    - label: "Argument from first principles on cost of undefined standards. Generalised patterns, no client-specific data."
+    - label: "First-principles analysis of the cost of undefined standards. Generalised patterns, no client-specific data."
   limits: "Most relevant to repeatable work performed by multiple people. Less directly applicable to genuinely novel work, where ambiguity may be unavoidable and the standard has to be discovered."
   updates: []
 ---

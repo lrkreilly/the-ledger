@@ -7,7 +7,7 @@ interface Update {
   change: string;
 }
 
-interface Source {
+interface BasisItem {
   label: string;
   url?: string;
 }
@@ -30,7 +30,7 @@ interface Props {
   ogImage?: string;
   paperTrail: {
     method: string;
-    sources: Source[];
+    basis: BasisItem[];
     limits: string;
     updates: Update[];
   };
@@ -178,7 +178,7 @@ const breadcrumbJsonLd = {
           )}
           <PaperTrail
             method={paperTrail.method}
-            sources={paperTrail.sources}
+            basis={paperTrail.basis}
             limits={paperTrail.limits}
             updates={paperTrail.updates}
           />

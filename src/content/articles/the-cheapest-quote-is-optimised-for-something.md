@@ -7,7 +7,7 @@ publishDate: 2026-05-16
 summary: "A quote is a price for a defined scope. When two quotes differ by 40%, the price is not what differs — the scope is. The cheap one is optimised. The question is for what."
 paperTrail:
   method: "Compares quote structure rather than quote totals, by looking at what each quote includes, excludes, and defers. Built from common patterns seen in home services, trades, and small B2B procurement."
-  sources:
+  basis:
     - label: "Public pricing and quote-structure guidance from trade associations in the UK and AU."
     - label: "Consumer-protection guidance on scope, variations, and warranty exclusions in service contracts."
     - label: "Generalised from common patterns in home-services procurement. No proprietary contractor data."

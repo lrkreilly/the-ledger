@@ -7,7 +7,7 @@ publishDate: 2026-05-23
 summary: "Sticker price is the cost of the object on the day you bought it. The actual cost arrives in instalments — and the cheap version pays in larger ones."
 paperTrail:
   method: "Frames cheap-vs-expensive as a question of cost cadence rather than cost total. Draws on the standard distinction between acquisition cost, ownership cost, and replacement cost."
-  sources:
+  basis:
     - label: "Total cost of ownership models from public procurement and facilities-management literature."
     - label: "Argument from first principles. No proprietary data."
   limits: "Applies most clearly to durable goods and services with meaningful failure modes. Less useful for consumables, fashion items, or one-off purchases where lifetime cost is not the operative question."

@@ -47,36 +47,38 @@ Every article carries a `paperTrail` object in frontmatter with three required f
 ```yaml
 paperTrail:
   method: "How the conclusion was reached."
-  sources:
-    - label: "A specific source."
+  basis:
+    - label: "A specific basis entry."
       url: "https://..."   # optional; include when there's a real public link
-    - label: "Another specific source."
+    - label: "Another specific basis entry."
   limits: "What this argument does not cover."
   updates:
     - date: 2026-09-15
       change: "Revised conclusion based on..."
 ```
 
-Build fails if any of method/sources/limits is missing — this is enforced by the Zod schema in `src/content.config.ts`. Paper Trail should feel like method, not marketing: *here is how this conclusion was reached*, not *here is why you should trust us*.
+Build fails if any of method/basis/limits is missing — this is enforced by the Zod schema in `src/content.config.ts`. Paper Trail should feel like method, not marketing: *here is how this conclusion was reached*, not *here is why you should trust us*.
 
-### Sources is a structured array, not a paragraph
+### Basis is a structured array, not a paragraph
 
-`sources` is a YAML array — each source is its own entry with a `label` (required) and optional `url`. The array can never be empty. The format is deliberate: it forces enumeration over gesturing. A vague string ("industry experience, common sense") slips by as prose; the same content as a list item exposes its weakness.
+The field is called **basis**, not "sources." Many Ledger pieces rest on a mix of public docs, pattern analysis, lived experience, and first-principles reasoning. Not all of that is "sourcing" in the strict sense, and forcing it into a field called Sources invites bad-faith entries that gesture at citations. **Basis** is honest about what the piece is actually built on, whatever shape that takes.
 
-Each entry should be specific enough that a reader could in principle go and check it. "Public guidance from trade associations" is acceptable. "My experience" is not — if a piece rests on personal experience, name what kind (e.g., "Operations work across N home-services contractors over X years").
+`basis` is a YAML array — each entry has a `label` (required) and optional `url`. The array can never be empty. The format is deliberate: it forces enumeration over gesturing. A vague string ("industry experience, common sense") slips by as prose; the same content as a list item exposes its weakness.
+
+Each entry should be specific enough that a reader could in principle understand what it is. "Public guidance from trade associations" is acceptable. "My experience" is not — if a piece rests on personal experience, name what kind (e.g., "Operations work across N home-services contractors over X years").
 
 ### Reasoning pieces (arguments from first principles)
 
-Some Ledger pieces argue from definitions, trade-offs, or framework reasoning rather than from external evidence. The framework allows this — but the choice must be **declared**, not hidden.
+Some Ledger pieces argue from definitions, trade-offs, or framework reasoning rather than from external evidence or observation. The framework allows this — but the choice must be **declared**, not hidden.
 
-For a reasoning piece, the `sources` array must contain exactly one entry with this exact label:
+For a reasoning piece, the `basis` array must contain exactly one entry with this exact label:
 
 ```yaml
-sources:
-  - label: "Argument from first principles. No external sources."
+basis:
+  - label: "Argument from first principles."
 ```
 
-The absence of evidence is never accidental on The Ledger; it's always a positive claim. Empty `sources` won't compile.
+The absence of external evidence is never accidental on The Ledger; it's always a positive claim. Empty `basis` won't compile.
 
 ### What counts as substantive (for Updates)
 
@@ -86,7 +88,7 @@ A change is substantive — and **must** be logged as a Paper Trail update — i
 - Removes or weakens a claim
 - Adds material new evidence
 - Narrows or expands the scope of the argument
-- Adds or removes a source
+- Adds or removes a basis entry
 
 A change is **not** substantive — edit silently, no update entry needed — if it:
 
@@ -136,7 +138,7 @@ publishDate: 2026-05-23
 summary: "One sentence, 20–280 chars. Used for cards, meta description, OG share."
 paperTrail:
   method: "..."
-  sources:
+  basis:
     - label: "..."
       url: "..."  # optional
   limits: "..."
@@ -158,8 +160,8 @@ paperTrail:
 
 ## When drafting
 
-You generate format, frontmatter, schema, and first-draft prose. The editor decides what is worth writing about, the angle, the substance, and whether the piece holds the editorial line. Paper Trail — method, sources, limits — stays editorial judgement, not AI judgement.
+You generate format, frontmatter, schema, and first-draft prose. The editor decides what is worth writing about, the angle, the substance, and whether the piece holds the editorial line. Paper Trail — method, basis, limits — stays editorial judgement, not AI judgement.
 
-Do not invent sources. If something needs evidence and you don't have a real source, leave a `TODO:` marker in the Paper Trail rather than inventing one. If the piece genuinely doesn't rest on external evidence, use the reasoning-piece convention above — declare it, don't fake citations.
+Do not invent basis entries. If something needs evidence and you don't have a real source or observation, leave a `TODO:` marker in the Paper Trail rather than inventing one. If the piece genuinely rests on reasoning rather than external evidence, use the reasoning-piece convention above — declare it, don't fake citations.
 
 Do not write "Top 10" lists, even in draft form, even if asked playfully. Push back.

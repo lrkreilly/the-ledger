@@ -4,19 +4,19 @@ interface Update {
   change: string;
 }
 
-interface Source {
+interface BasisItem {
   label: string;
   url?: string;
 }
 
 interface Props {
   method: string;
-  sources: Source[];
+  basis: BasisItem[];
   limits: string;
   updates?: Update[];
 }
 
-const { method, sources, limits, updates = [] } = Astro.props;
+const { method, basis, limits, updates = [] } = Astro.props;
 
 const dateFmt = new Intl.DateTimeFormat('en-GB', {
   day: 'numeric',
@@ -34,15 +34,15 @@ const dateFmt = new Intl.DateTimeFormat('en-GB', {
       <dd>{method}</dd>
     </div>
     <div class="paper-trail__row">
-      <dt>Sources</dt>
+      <dt>Basis</dt>
       <dd>
-        <ul class="paper-trail__sources">
-          {sources.map((s) => (
+        <ul class="paper-trail__basis">
+          {basis.map((b) => (
             <li>
-              {s.url ? (
-                <a href={s.url} rel="noopener" target="_blank">{s.label}</a>
+              {b.url ? (
+                <a href={b.url} rel="noopener" target="_blank">{b.label}</a>
               ) : (
-                <span>{s.label}</span>
+                <span>{b.label}</span>
               )}
             </li>
           ))}
@@ -122,30 +122,30 @@ const dateFmt = new Intl.DateTimeFormat('en-GB', {
     color: var(--ink);
     margin: 0;
   }
-  .paper-trail__sources {
+  .paper-trail__basis {
     list-style: none;
     margin: 0;
     padding: 0;
     display: grid;
     gap: 8px;
   }
-  .paper-trail__sources li {
+  .paper-trail__basis li {
     position: relative;
     padding-left: 18px;
   }
-  .paper-trail__sources li::before {
+  .paper-trail__basis li::before {
     content: '·';
     position: absolute;
     left: 0;
     color: var(--ink-3);
     font-weight: 600;
   }
-  .paper-trail__sources a {
+  .paper-trail__basis a {
     color: var(--ink);
     border-bottom: 1px solid var(--rule);
     transition: color 0.15s, border-color 0.15s;
   }
-  .paper-trail__sources a:hover {
+  .paper-trail__basis a:hover {
     color: var(--accent);
     border-color: var(--accent);
   }

@@ -33,18 +33,20 @@ const articles = defineCollection({
     ogImage: z.string().optional(),
     paperTrail: z.object({
       method: z.string().min(1, 'Paper Trail requires a method.'),
-      // sources is an array — enumeration over gesturing. For reasoning pieces
-      // that argue from first principles, the array must still contain one
-      // explicit entry declaring that stance (see .cursorrules). The array
-      // can never be empty; absence of evidence must be a positive claim.
-      sources: z
+      // basis is an array — enumeration over gesturing. "Basis" rather than
+      // "sources" because Ledger pieces often rest on a mix of public docs,
+      // pattern analysis, and first-principles reasoning. Not all of that is
+      // sourcing in the strict sense. For reasoning pieces, the array must
+      // still contain one explicit entry declaring that stance (see
+      // .cursorrules). The array can never be empty.
+      basis: z
         .array(
           z.object({
-            label: z.string().min(1, 'Each source needs a label.'),
+            label: z.string().min(1, 'Each basis entry needs a label.'),
             url: z.string().url().optional(),
           }),
         )
-        .min(1, 'Paper Trail requires at least one source entry.'),
+        .min(1, 'Paper Trail requires at least one basis entry.'),
       limits: z.string().min(1, 'Paper Trail requires limits.'),
       updates: z
         .array(
