@@ -79,7 +79,9 @@ Each entry should be specific enough that a reader could in principle understand
 
 That's the framework modelling itself — the entry tells the reader what the piece rests on (reasoned analysis) and what it doesn't (insider data), inside the entry itself. Aim for this when the basis type warrants it.
 
-**Limits is a string, deliberately.** Unlike Basis, Limits is not an array. The failure mode for Limits is omission, not gesturing — the writer's risk is forgetting to qualify, not over-qualifying vaguely. A single qualifying paragraph handles multiple distinct limits well: *"Applies most clearly to durable goods with meaningful failure modes. Less useful for consumables. Geographic scope is UK/AU; pricing patterns differ in US markets."* If a piece genuinely needs more limits than fit in one paragraph, the piece is overclaiming and should be scoped, not the schema extended.
+**Limits is a string by design.** Multiple limits go in one continuous qualifying paragraph, not separate items. If the prose form breaks down on a piece, scope or split the piece — don't fragment the field.
+
+**Format-strain is a signal about the piece, not the schema.** This generalises beyond Limits. When any field feels cramped on a particular piece — Limits won't fit a paragraph, Basis has more entries than reads cleanly, the summary refuses to land under 280 chars, the title needs a subtitle to make sense — the first question is whether the piece is overclaiming, drifting from its desk, or trying to do too much. Scope or split the piece before extending the schema. Every field is an obligation; adding shape never makes editorial work less.
 
 ### Reasoning pieces (arguments from first principles)
 
