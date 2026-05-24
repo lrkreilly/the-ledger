@@ -8,12 +8,12 @@ summary: "\"Top 10\" lists exist because they rank — and ranking is what searc
 paperTrail:
   method: "Examines the economic and structural incentives behind ranking content, rather than the quality of any individual list. Frames \"Top 10\" as a content format with predictable behaviours."
   basis:
-    - label: "Amazon Associates programme structure (publicly documented commission model)."
+    - label: "Publicly documented affiliate programme terms, including Amazon Associates."
       url: "https://affiliate-program.amazon.com/help/operating/policies"
-    - label: "Generic CPS / affiliate commission models across mainstream programmes."
-    - label: "Search engine results page behaviour for high-commercial-intent queries."
-    - label: "First-principles analysis of publisher incentives. No insider publishing data."
-  limits: "Describes the dominant pattern, not every instance. Some ranked lists are produced honestly with declared methodology and no affiliate structure. The pattern is the norm; the exceptions exist."
+    - label: "Examples of search-result ranking pages for high-commercial-intent queries."
+    - label: "Public \"best\", \"top\", and comparison pages reviewed for method, disclosure, and ranking criteria."
+    - label: "Reasoned analysis of the incentives created by ranking formats. No insider publishing data."
+  limits: "Describes a common pattern, not every instance. Some ranked lists are produced honestly, with clear methodology, declared criteria, and no hidden commercial incentive."
   updates: []
 ---
 

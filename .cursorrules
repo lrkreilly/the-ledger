@@ -42,7 +42,13 @@ A piece belongs to exactly one desk. Tags handle secondary themes.
 
 ## Paper Trail (non-negotiable)
 
-Every article carries a `paperTrail` object in frontmatter with three required fields and optional updates:
+The Ledger standard, in one sentence each:
+
+- **Method** explains how the conclusion was reached.
+- **Basis** explains what the conclusion draws on.
+- **Limits** explains where the claim stops.
+
+Every article carries a `paperTrail` object in frontmatter with these three required fields and optional updates:
 
 ```yaml
 paperTrail:

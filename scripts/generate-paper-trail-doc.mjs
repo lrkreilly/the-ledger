@@ -195,7 +195,7 @@ const doc = new Document({
       new Paragraph({
         spacing: { after: 240 },
         children: [new TextRun({
-          text: 'Version 2  ·  Structured sources, retraction flag, editorial conventions',
+          text: 'Version 2.1  ·  Basis terminology, retraction flag, editorial conventions',
           font: FONT_SANS, size: 18, color: INK_3, characterSpacing: 80, bold: true,
         })],
       }),
@@ -208,10 +208,14 @@ const doc = new Document({
       p("From the editorial framework:"),
       pullQuote("Every conclusion shows its working: the assumptions, evidence considered, limits that apply, and where the conclusion stops being true. It says here is how this conclusion was reached, not here is why you should trust us. If a Ledger piece cannot show its working, it does not belong here."),
 
-      p("The mechanism is five frontmatter fields:"),
-      bullet("Method (required, string) — how the conclusion was reached. Frame, reasoning, what kind of question this is."),
-      bullet("Sources (required, structured array) — what evidence was used. Each source is its own entry; the array can never be empty."),
-      bullet("Limits (required, string) — what this argument does not cover. Where it stops being true, what kind of reader it isn’t for."),
+      p("The Ledger standard, in one sentence each:"),
+      bullet("Method explains how the conclusion was reached."),
+      bullet("Basis explains what the conclusion draws on."),
+      bullet("Limits explains where the claim stops."),
+      p("The mechanism is five frontmatter fields — three required, two optional:"),
+      bullet("Method (required, string) — frame, reasoning, what kind of question this is."),
+      bullet("Basis (required, structured array) — public docs, pattern analysis, lived experience, first-principles reasoning, or a mix. Each entry is its own item; the array can never be empty."),
+      bullet("Limits (required, string) — where the argument stops being true, what kind of reader it isn’t for."),
       bullet("Updates (optional, array) — corrections and revisions over time, each dated."),
       bullet("Retracted (optional, object) — formal retraction marker. When present, the article is withdrawn but the URL stays live with a retraction notice."),
 
@@ -221,11 +225,11 @@ const doc = new Document({
       h2('Schema validation — src/content.config.ts'),
       p('This runs at build time via Astro’s content collections and Zod. If a required field is missing or violates the shape, the build fails. Vercel won’t deploy. The editorial rule is enforced by the compiler, not by your willpower.'),
       ...codeBlock(`paperTrail: z.object({
-  method:  z.string().min(1, 'Paper Trail requires a method.'),
-  sources: z.array(z.object({
-    label: z.string().min(1, 'Each source needs a label.'),
+  method: z.string().min(1, 'Paper Trail requires a method.'),
+  basis:  z.array(z.object({
+    label: z.string().min(1, 'Each basis entry needs a label.'),
     url:   z.string().url().optional(),
-  })).min(1, 'Paper Trail requires at least one source entry.'),
+  })).min(1, 'Paper Trail requires at least one basis entry.'),
   limits:  z.string().min(1, 'Paper Trail requires limits.'),
   updates: z.array(z.object({
     date:   z.coerce.date(),
@@ -247,10 +251,10 @@ publishDate: 2026-05-23
 summary: "One sentence, 20–280 chars."
 paperTrail:
   method: "How the conclusion was reached."
-  sources:
-    - label: "A specific source."
+  basis:
+    - label: "A specific basis entry."
       url: "https://..."           # optional
-    - label: "Another specific source."
+    - label: "Another specific basis entry."
   limits: "What this argument does not cover."
   updates:
     - date: 2026-09-15
@@ -259,21 +263,21 @@ paperTrail:
 
 Article body in markdown.`),
 
-      // 3. Sources as an array
-      h1('3. Sources as a structured array'),
-      p('Sources is the field that most determines whether a piece reads as evidence-aware or as gesture. v2 changed it from a free-text string to an array of structured entries to raise the floor on quality without raising the rule.'),
+      // 3. Basis as an array
+      h1('3. Basis — what the argument rests on'),
+      p('The field is called Basis, not "Sources." Ledger pieces often rest on a mix of public docs, pattern analysis, lived experience, and first-principles reasoning. Not all of that is "sourcing" in the strict academic or journalistic sense. A field called Sources would force every entry to dress itself up as a citation, which invites bad-faith gesturing. Basis is honest about what the piece is actually built on, whatever shape that takes.'),
 
-      h2('Why the format change'),
-      p('A vague string ("industry experience, common sense") slips by as prose. The same content as a single list item exposes its weakness. The format doesn’t make weak entries impossible — but it makes them visible, both to the writer and the reader.'),
-      p('Each entry should be specific enough that a reader could in principle go and check it. "Public guidance from trade associations" is acceptable. "My experience" is not — if a piece rests on personal experience, name what kind ("Operations work across N home-services contractors over X years").'),
-      p('Optional url field is the only enrichment. Resist any urge to add more fields (type, accessed_date, quote). The strength of the change is that it’s just label plus optional url. The moment you add a third field, people start using fields to hide weakness.'),
+      h2('Why the structured-array format'),
+      p('Basis is a YAML array; each entry is its own item. A vague string ("industry experience, common sense") slips by as prose. The same content as a single list item exposes its weakness. The format doesn’t make weak entries impossible — but it makes them visible, both to the writer and the reader.'),
+      p('Each entry should be specific enough that a reader could in principle understand what it is. "Public guidance from trade associations" is acceptable. "My experience" is not — if a piece rests on personal experience, name what kind ("Operations work across N home-services contractors over X years").'),
+      p('Optional url is the only enrichment. Resist any urge to add more fields (type, accessed_date, quote). The strength of the format is that it’s just label plus optional url. The moment you add a third field, people start using fields to hide weakness.'),
 
       h2('Reasoning pieces — arguments from first principles'),
-      p('Some Ledger pieces argue from definitions, trade-offs, or framework reasoning rather than from external evidence. The framework allows this — but the choice must be declared, not hidden.'),
-      p('For a reasoning piece, the sources array must contain exactly one entry with this exact label:'),
-      ...codeBlock(`sources:
-  - label: "Argument from first principles. No external sources."`),
-      callout('Rule', "The absence of evidence is never accidental on The Ledger. It’s always a positive claim. Empty sources won’t compile."),
+      p('Some Ledger pieces argue from definitions, trade-offs, or framework reasoning rather than from external evidence or observation. The framework allows this — but the choice must be declared, not hidden.'),
+      p('For a reasoning piece, the basis array must contain exactly one entry with this exact label:'),
+      ...codeBlock(`basis:
+  - label: "Argument from first principles."`),
+      callout('Rule', "The absence of external evidence is never accidental on The Ledger. It’s always a positive claim. Empty basis won’t compile."),
 
       // 4. Updates and what counts
       h1('4. Updates — what counts as substantive'),
@@ -284,7 +288,7 @@ Article body in markdown.`),
       bullet('Removes or weakens a claim.'),
       bullet('Adds material new evidence.'),
       bullet('Narrows or expands the scope of the argument.'),
-      bullet('Adds or removes a source.'),
+      bullet('Adds or removes a basis entry.'),
 
       h2('A change is not substantive — edit silently — if it:'),
       bullet('Fixes a typo, grammar, or phrasing.'),
@@ -332,8 +336,8 @@ Article body in markdown.`),
       p("src/components/PaperTrail.astro sits at the bottom of every article body. It renders:"),
       bullet("A heavy 2px black top rule — visually separates Paper Trail from the article body so it reads as method, not as more prose."),
       bullet("An eyebrow label “Paper Trail” plus an italic intro: “How this conclusion was reached.”"),
-      bullet("A definition list with three rows — Method / Sources / Limits — in a 120px label / fluid value grid."),
-      bullet("Sources rendered as a bulleted list, one entry per line. Labels with URLs become underlined links."),
+      bullet("A definition list with three rows — Method / Basis / Limits — in a 120px label / fluid value grid."),
+      bullet("Basis rendered as a bulleted list, one entry per line. Labels with URLs become underlined links."),
       bullet("An Updates section below, only rendered if at least one update exists, listing each in date / change rows sorted newest-first."),
 
       h2('Retracted article'),
@@ -354,7 +358,7 @@ Article body in markdown.`),
       h2('A correction to a live piece'),
       bullet('Edit the article markdown directly (fix the body).'),
       bullet('Append a new entry to paperTrail.updates with the date and a description of the change.'),
-      bullet('If the correction adds or removes a source, edit the sources array too.'),
+      bullet('If the correction adds or removes a basis entry, edit the basis array too.'),
       bullet('Commit and push.'),
       p('Use the substantive-vs-not test above to decide whether an Updates entry is needed. When in doubt, log it.'),
 
@@ -369,7 +373,7 @@ Article body in markdown.`),
 
       // The principle
       h1('The principle behind it'),
-      p("The whole mechanism is built so the editorial discipline is the path of least resistance. You literally cannot publish without method, sources, and limits. You literally cannot have an empty sources array. You literally cannot show an “Updated” date without logging what changed. You literally cannot retract a piece without a date and a reason. The framework is enforced by the compiler, surfaced to readers in the article, and structured for machines in JSON-LD — all from one block of frontmatter. That’s the spine of the whole publication."),
+      p("The whole mechanism is built so the editorial discipline is the path of least resistance. You literally cannot publish without method, basis, and limits. You literally cannot have an empty basis array. You literally cannot show an “Updated” date without logging what changed. You literally cannot retract a piece without a date and a reason. The framework is enforced by the compiler, surfaced to readers in the article, and structured for machines in JSON-LD — all from one block of frontmatter. That’s the spine of the whole publication."),
 
       rule(),
 
@@ -400,11 +404,11 @@ ogImage: "/og/custom-image.png"
 # PAPER TRAIL (required)
 paperTrail:
   method: "How the conclusion was reached."
-  sources:
-    - label: "A specific source."
+  basis:
+    - label: "A specific basis entry."
       url: "https://..."           # url is optional
-    - label: "Argument from first principles. No external sources."
-      # Use this exact label for reasoning pieces.
+    - label: "Argument from first principles."
+      # Use this exact label, alone, for reasoning pieces.
   limits: "What this argument does not cover."
   updates:
     - date: 2026-09-15
