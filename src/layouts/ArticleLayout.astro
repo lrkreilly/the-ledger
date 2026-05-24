@@ -51,7 +51,7 @@ const effectiveModified =
     ? paperTrail.updates.reduce((latest, u) => (u.date > latest ? u.date : latest), publishDate)
     : modifiedDate ?? publishDate;
 
-const canonicalUrl = new URL(`/${desk}/${slug}`, Astro.site).href;
+const canonicalUrl = new URL(`/${desk}/${slug}/`, Astro.site).href;
 const siteUrl = Astro.site?.href ?? 'https://theledger.media/';
 
 const articleJsonLd: Record<string, unknown> = {
