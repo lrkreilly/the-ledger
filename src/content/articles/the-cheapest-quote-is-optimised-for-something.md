@@ -79,11 +79,11 @@ Middle quotes typically combine reliable execution without premium standards, so
 
 The mix varies. The buyer reads it the same way they read the cheap and expensive sections above: which of these traits matter on this specific job, and which they're paying for either way.
 
-## Questions that reveal what the price is hiding
+## How to read what the price is hiding
 
 The point of comparing quotes is not to find the right number. It is to make the assumptions inside each quote visible, then decide which set of assumptions matches the actual job. The following questions help with that. They are diagnostic prompts, not a script to read into a phone.
 
-Before asking anything, audit the quote document. Detailed line items, named materials, specific work steps, and explicit exclusions answer many of these questions before any conversation starts. A quote that just says "replace tap: $180" is structurally provisional. A quote that names the brand, the type of valve, the time estimate, and what isn't included is structurally stable. In a busy market where the operator won't sit through a list of questions, the document audit is often what's left.
+Before asking anything, audit the quote document. Detailed line items, named materials, specific work steps, and explicit exclusions answer many of these questions before any conversation starts. A quote that just says "paint trim: $300" is structurally provisional. A quote that names the paint, the number of coats, the prep work, and what isn't included is structurally stable. In a busy market where the operator won't sit through a list of questions, the document audit is often what's left.
 
 *What scope is this price for?* Specifically. What is being done, what is not being done, what would trigger a variation. If the quote does not make this clear, the price is provisional.
 
