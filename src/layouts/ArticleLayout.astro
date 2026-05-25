@@ -79,7 +79,7 @@ const citation = paperTrail.basis.map((b) =>
   b.url ? { '@type': 'CreativeWork', name: b.label, url: b.url } : b.label,
 );
 
-const logoUrl = new URL('/icon-512.png', Astro.site).href;
+const logoUrl = new URL('/logo.png', Astro.site).href;
 const authorUrl = new URL('/about/', Astro.site).href;
 
 const articleJsonLd: Record<string, unknown> = {
