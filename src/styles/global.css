@@ -280,10 +280,17 @@ ul, ol { list-style: none; }
 
 @media (max-width: 480px) {
   :root { --gutter: 22px; }
+  /* Keep left/right on one line when they fit; allow the right item to wrap
+     to its own line if the combined width overflows (e.g. framework page).
+     margin-left: auto on the right item right-aligns it whether it stays on
+     the same line as the left item or wraps below it. */
   .masthead-trim {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+  }
+  .masthead-trim__right {
+    margin-left: auto;
+    text-align: right;
   }
   .masthead-trim__left,
   .masthead-trim__right { font-size: 10px; letter-spacing: 0.16em; }
