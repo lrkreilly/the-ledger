@@ -9,7 +9,7 @@ paperTrail:
   method: "Pattern analysis across service-pricing categories: what speed, scope, warranty depth, risk absorption, overhead, follow-up, and customer self-management look like at different price points, and how those choices show up in the quote a buyer receives."
   basis:
     - label: "Operator observation of service-business pricing across multiple categories. No proprietary data from any single business is cited."
-    - label: "Observed quote structures across painting, plumbing, electrical, removals, and professional services."
+    - label: "Observed quote structures across painting, plumbing, electrical, cleaning, and professional services."
     - label: "Familiarity with general consumer-protection guidance on comparing quotes, as pattern rather than citation of any specific source."
     - label: "First-principles reasoning about service-business economics: how overhead, warranty exposure, and scope ambiguity translate into price."
   limits: "Does not argue that cheap quotes are bad or expensive ones are better. Does not assess any specific operator, trade, or business. The patterns described are decision prompts, not universal rules; buyers still need to compare scope, proof, warranty, availability, and risk in their own situation. Specific category pricing varies significantly by region and market."
