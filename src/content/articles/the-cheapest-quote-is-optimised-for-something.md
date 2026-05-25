@@ -37,7 +37,7 @@ The cheapest quote is not automatically wrong. Sometimes it is the right answer.
 
 The expensive quote is not automatically right either, although sometimes the high number is the right answer. A business that pays its tradespeople properly, uses better materials, carries proper insurance, and stands behind its work financially produces a number that is genuinely higher without anything being inflated. Expensive can mean thorough. It can mean professional-grade. It can mean a business that has the margin to do the job properly the first time. It can also mean overhead, brand premium, a fully booked schedule that doesn't really need the work, or the cost of warranty cover the buyer doesn't actually need. Treating every high quote as price gouging is also lazy thinking. So is assuming every high quote earns its premium.
 
-The premise behind a useful comparison is not "which one is fair" but rather "what each price is built to do." That premise is part of [how The Ledger reads decisions like this](/how-the-ledger-works): not as evidence of greed or honesty, but as a structure that can be inspected.
+The premise behind a useful comparison is not "which one is fair" but rather "what each price is built to do." That premise is part of [how The Ledger reads decisions like this](/how-the-ledger-works/): not as evidence of greed or honesty, but as a structure that can be inspected.
 
 ## What cheap quotes are often optimised for
 

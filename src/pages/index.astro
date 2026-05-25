@@ -52,7 +52,7 @@ const description =
         <p class="method__body">
           Every conclusion published here shows its working — the assumptions made, the evidence considered, the limits that apply, and the point at which it stops being true. We call this <em>Paper Trail</em>. It is how The Ledger keeps itself honest.
         </p>
-        <a href="/how-the-ledger-works" class="method__link">Read the method</a>
+        <a href="/how-the-ledger-works/" class="method__link">Read the method</a>
       </div>
     </div>
   </section>
@@ -76,7 +76,7 @@ const description =
                 <p class="desk__empty">Forthcoming.</p>
               ) : (
                 pieces.map((piece) => (
-                  <a href={`/${piece.data.desk}/${piece.data.slug}`} class="desk__piece">
+                  <a href={`/${piece.data.desk}/${piece.data.slug}/`} class="desk__piece">
                     <span class="desk__piece-title">{piece.data.title}</span>
                     <time class="desk__piece-date" datetime={piece.data.publishDate.toISOString()}>
                       {dateFmt.format(piece.data.publishDate)}
@@ -85,7 +85,7 @@ const description =
                 ))
               )}
             </div>
-            <a href={`/${desk.slug}`} class="desk__more">View this desk</a>
+            <a href={`/${desk.slug}/`} class="desk__more">View this desk</a>
           </article>
         ))}
       </div>
