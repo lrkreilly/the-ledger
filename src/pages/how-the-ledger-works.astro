@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const description =
-  'How The Ledger decides what to publish — the position, the desks, the filing rule, and the tone.';
+  'How The Ledger decides what to publish — the position, the desks, the method, and how corrections work.';
 ---
 <BaseLayout
   title="The Ledger — Editorial Framework"
@@ -16,7 +16,7 @@ const description =
       <p class="eyebrow doc-title__eyebrow">How The Ledger Works</p>
       <h1 class="doc-title__title">Editorial<br /><em>Framework</em></h1>
       <p class="doc-title__subtitle">
-        How The Ledger decides what to publish — the position, the desks, the filing rule, and the tone.
+        How The Ledger decides what to publish — the position, the desks, the method, and how corrections work.
       </p>
     </div>
   </section>
@@ -30,11 +30,9 @@ const description =
           <li><a href="#position"><span class="doc-toc__numeral">I.</span><span>The position</span></a></li>
           <li><a href="#standards"><span class="doc-toc__numeral">II.</span><span>Editorial standards</span></a></li>
           <li><a href="#desks"><span class="doc-toc__numeral">III.</span><span>The desks</span></a></li>
-          <li><a href="#filing"><span class="doc-toc__numeral">IV.</span><span>The two-step filing rule</span></a></li>
-          <li><a href="#paper-trail"><span class="doc-toc__numeral">V.</span><span>Paper Trail</span></a></li>
-          <li><a href="#tone"><span class="doc-toc__numeral">VI.</span><span>Tone</span></a></li>
-          <li><a href="#independence"><span class="doc-toc__numeral">VII.</span><span>Editorial independence</span></a></li>
-          <li><a href="#corrections"><span class="doc-toc__numeral">VIII.</span><span>Corrections and retractions</span></a></li>
+          <li><a href="#paper-trail"><span class="doc-toc__numeral">IV.</span><span>Paper Trail</span></a></li>
+          <li><a href="#independence"><span class="doc-toc__numeral">V.</span><span>Editorial independence</span></a></li>
+          <li><a href="#corrections"><span class="doc-toc__numeral">VI.</span><span>Corrections and retractions</span></a></li>
         </ol>
       </aside>
 
@@ -109,58 +107,24 @@ const description =
           <p>Use this desk for pieces about ambiguity, documentation, accountability, vague standards, misaligned incentives, and the operational failures that come from undefined "good."</p>
         </section>
 
-        <section class="doc-section" id="filing">
-          <p class="doc-section__numeral">IV.</p>
-          <h1>The two-step filing rule</h1>
-          <p>Most Ledger pieces touch more than one desk. The filing rule is to find a piece's primary home, not every topic it brushes against.</p>
-          <ol>
-            <li>Is the piece anchored in the home, property, cleaning, maintenance, or service-hiring domain? If yes, file it under <strong>Home &amp; Services</strong>.</li>
-            <li>If no, what is the dominant analytical mode? Cost-thinking → <strong>Value &amp; Trade-offs</strong>. Claim-evaluation → <strong>Internet Claims</strong>. Systems-thinking → <strong>Work &amp; Standards</strong>.</li>
-          </ol>
-          <p>Tags handle secondary themes. Tags do not change a piece's primary desk.</p>
-          <p>A piece can only belong to one desk. The desk is the lens through which the piece is best read — not the only lens that could apply.</p>
-        </section>
-
         <section class="doc-section" id="paper-trail">
-          <p class="doc-section__numeral">V.</p>
+          <p class="doc-section__numeral">IV.</p>
           <h1>Paper Trail</h1>
-          <p>Paper Trail is The Ledger's method. Every article carries one. It is built from three required fields, and in one sentence each:</p>
+          <p>Paper Trail shows the working behind a piece: how the conclusion was reached and how the piece was made. Every article carries one.</p>
+          <p>It is built from three required fields, one optional field, and two extensions:</p>
           <ul>
             <li><strong>Method</strong> explains how the conclusion was reached.</li>
             <li><strong>Basis</strong> explains what the conclusion draws on.</li>
             <li><strong>Limits</strong> explains where the claim stops.</li>
+            <li><strong>Time spent</strong> records the rough hours from concept to publication. Optional but recommended for substantive pieces.</li>
           </ul>
-          <p>Two optional fields extend it over time: <strong>Updates</strong> log substantive changes after publication, each dated; <strong>Retracted</strong> marks a piece formally withdrawn, with the URL kept live and a retraction notice in place of the body.</p>
-          <p>Paper Trail is a format, not a separate publication. It lives inside articles — sometimes as a sidebar, sometimes as a closing note, sometimes as a standing addendum that updates over time.</p>
-          <p>The principle: Paper Trail should feel like method, not marketing. It says <em>here is how this conclusion was reached</em>, not <em>here is why you should trust us</em>.</p>
+          <p>Two extensions log changes over time: <strong>Updates</strong> record substantive editorial changes after publication, each dated; <strong>Retracted</strong> marks a piece formally withdrawn, with the URL kept live and a retraction notice in place of the body.</p>
+          <p>The principle: Paper Trail should feel like method, not marketing. It says <em>here is how this conclusion was reached and how this piece was made</em>, not <em>here is why you should trust us</em>.</p>
           <p>If a Ledger piece cannot show its working, it does not belong here.</p>
         </section>
 
-        <section class="doc-section" id="tone">
-          <p class="doc-section__numeral">VI.</p>
-          <h1>Tone</h1>
-          <h3>The Ledger sounds</h3>
-          <ul>
-            <li>Calm</li>
-            <li>Clear</li>
-            <li>Specific</li>
-            <li>Mature</li>
-            <li>Evidence-aware</li>
-            <li>Comfortable saying "it depends"</li>
-          </ul>
-          <h3>The Ledger does not sound</h3>
-          <ul>
-            <li>Hyped</li>
-            <li>Clickbait-y</li>
-            <li>Confident without context</li>
-            <li>Motivational</li>
-            <li>Performatively blunt</li>
-            <li>Promotional</li>
-          </ul>
-        </section>
-
         <section class="doc-section" id="independence">
-          <p class="doc-section__numeral">VII.</p>
+          <p class="doc-section__numeral">V.</p>
           <h1>Editorial independence</h1>
           <p>The Ledger must stand on its own. It does not exist to justify a company, product, service, or side.</p>
           <p>Where a writer has a relevant connection to a subject, it is disclosed plainly and briefly — never as a selling point.</p>
@@ -168,7 +132,7 @@ const description =
         </section>
 
         <section class="doc-section" id="corrections">
-          <p class="doc-section__numeral">VIII.</p>
+          <p class="doc-section__numeral">VI.</p>
           <h1>Corrections and retractions</h1>
           <p>The Ledger may get things wrong. When it does, the correction sits on the original piece — not buried, not quietly fixed, and never on a separate page that the original doesn't link to.</p>
           <p>Three kinds of change are handled three different ways.</p>
