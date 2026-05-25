@@ -31,6 +31,8 @@ That is why the first job of a quote is not to give a number. It is to show what
 
 Some scope ambiguity is unavoidable. Some is the buyer's responsibility. Some is the operator's. But until the scope is the same across all three quotes, the comparison is between different jobs at different prices, not the same job at three prices.
 
+When the numbers are far apart, the pressure is not really about price. It is about not knowing what each price leaves out.
+
 ## The cheapest quote is not automatically wrong
 
 The cheapest quote is not automatically wrong. Sometimes it is the right answer. An operator with low overhead, a tight route that day, an apprentice who needs hours, or simply a different definition of "good enough" can produce a number that is genuinely lower without anything being hidden. Cheap can mean efficient. It can mean honest. It can mean a business operating at a leaner cost base than its competitors. It can also mean cutting corners, junior staff doing senior work, a job that has been miscalculated, a price set low to win the deposit, or a quote the operator will only deliver by skipping things the buyer assumed were included. Treating every low quote as suspect is its own kind of lazy thinking. So is assuming every low quote is a bargain.
