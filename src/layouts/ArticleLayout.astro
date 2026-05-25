@@ -70,6 +70,18 @@ const effectiveModified = updateDates.length > 0
 const canonicalUrl = new URL(`/${desk}/${slug}/`, Astro.site).href;
 const siteUrl = Astro.site?.href ?? 'https://theledger.media/';
 
+// Build citation array from basis entries. Entries with a URL become
+// CreativeWork objects (schema.org's preferred shape for citations); entries
+// without a URL become plain strings. The reasoning-piece marker
+// ("Argument from first principles.") is also emitted as a plain string
+// since it's not an external citation.
+const citation = paperTrail.basis.map((b) =>
+  b.url ? { '@type': 'CreativeWork', name: b.label, url: b.url } : b.label,
+);
+
+const logoUrl = new URL('/icon-512.png', Astro.site).href;
+const authorUrl = new URL('/about/', Astro.site).href;
+
 const articleJsonLd: Record<string, unknown> = {
   '@context': 'https://schema.org',
   // Retracted pieces use schema.org's RetractedArticle type — a recognised
@@ -80,13 +92,23 @@ const articleJsonLd: Record<string, unknown> = {
   description: summary,
   datePublished: publishDate.toISOString(),
   dateModified: effectiveModified.toISOString(),
-  author: { '@type': 'Person', name: author },
+  inLanguage: 'en-NZ',
+  isAccessibleForFree: true,
+  articleSection: deskName,
+  author: { '@type': 'Person', name: author, url: authorUrl },
   publisher: {
     '@type': 'Organization',
     name: 'The Ledger',
     url: siteUrl,
+    logo: {
+      '@type': 'ImageObject',
+      url: logoUrl,
+      width: 512,
+      height: 512,
+    },
   },
   mainEntityOfPage: canonicalUrl,
+  citation,
   ...(ogImage ? { image: new URL(ogImage, Astro.site).href } : {}),
 };
 
@@ -127,6 +149,13 @@ const breadcrumbJsonLd = {
   trimLeft={deskName}
   trimRight={dateFmt.format(publishDate)}
   jsonLd={[articleJsonLd, breadcrumbJsonLd]}
+  metaAuthor={author}
+  articleMeta={{
+    publishedTime: publishDate.toISOString(),
+    modifiedTime: effectiveModified.toISOString(),
+    author: author,
+    section: deskName,
+  }}
 >
   <article class="article" data-retracted={retracted ? 'true' : undefined}>
     <header class="article__header">
