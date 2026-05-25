@@ -42,31 +42,31 @@ The premise behind a useful comparison is not "which one is fair" but rather "wh
 
 None of these are automatically good or bad. Some are real value, some are corners cut, and which is which depends on the job.
 
-**Speed.** The operator is in and out the same day. For a buyer whose priority is speed and whose job is simple enough to fit a half-day window, this is exactly what they want. For a buyer whose job needs care, speed can mean the operator left before the work was done properly.
+*Speed.* The operator is in and out the same day. For a buyer whose priority is speed and whose job is simple enough to fit a half-day window, this is exactly what they want. For a buyer whose job needs care, speed can mean the operator left before the work was done properly.
 
-**Volume.** The operator runs many small jobs at standard rates. Each job gets the same treatment regardless of what the specific job actually needs. Fine when the job is genuinely standard. Less fine when the job has anything unusual about it that gets missed because the operator is on autopilot.
+*Volume.* The operator runs many small jobs at standard rates. Each job gets the same treatment regardless of what the specific job actually needs. Fine when the job is genuinely standard. Less fine when the job has anything unusual about it that gets missed because the operator is on autopilot.
 
-**Lean operation.** The operator runs with low fixed costs: no office, small crew, basic equipment. The savings get passed to the buyer. The trade-off is that the operator has less buffer when something goes wrong on site.
+*Lean operation.* The operator runs with low fixed costs: no office, small crew, basic equipment. The savings get passed to the buyer. The trade-off is that the operator has less buffer when something goes wrong on site.
 
-**Customer self-management.** The buyer is expected to do part of the work that a fuller-service operator would handle: prep the space, move furniture, be available for access, follow up on issues. Fine for a buyer who would rather pay less and handle the logistics. Not fine for a buyer who assumed those things were included.
+*Customer self-management.* The buyer is expected to do part of the work that a fuller-service operator would handle: prep the space, move furniture, be available for access, follow up on issues. Fine for a buyer who would rather pay less and handle the logistics. Not fine for a buyer who assumed those things were included.
 
-**Quality.** At a low enough price, the math forces compromises. The job has to fit inside the hours the price can pay for. That tends to show up as less prep, fewer coats, lighter sanding, or cheaper materials. The work gets done. Whether it holds up over time is a separate question.
+*Quality.* At a low enough price, the math forces compromises. The job has to fit inside the hours the price can pay for. That tends to show up as less prep, fewer coats, lighter sanding, or cheaper materials. The work gets done. Whether it holds up over time is a separate question.
 
 ## What expensive quotes are often optimised for
 
 None of these are automatically good or bad. Some are real value, some are standard overhead, and which is which depends on the job.
 
-**Standards and finish.** The expensive quote often prices a more thorough job: more careful prep, better materials, a more experienced crew, higher finish throughout. For a buyer who wants the job done to a high standard and will notice the difference, this is exactly what they're paying for. For a buyer on a job where finish doesn't particularly matter, it's spec they may not need.
+*Standards and finish.* The expensive quote often prices a more thorough job: more careful prep, better materials, a more experienced crew, higher finish throughout. For a buyer who wants the job done to a high standard and will notice the difference, this is exactly what they're paying for. For a buyer on a job where finish doesn't particularly matter, it's spec they may not need.
 
-**Margin to hold a standard.** The operator has the financial room to slow down when the job needs it, redo what didn't land right, or put the experienced person on the awkward part. Buyers who need that flexibility get real value from it. Buyers whose job goes to plan from start to finish are paying for room that does not end up being used.
+*Margin to hold a standard.* The operator has the financial room to slow down when the job needs it, redo what didn't land right, or put the experienced person on the awkward part. Buyers who need that flexibility get real value from it. Buyers whose job goes to plan from start to finish are paying for room that does not end up being used.
 
-**Buffer for the unexpected.** Some expensive quotes carry a 10-20% contingency. They have priced for the job that may show up rather than just the one written down: a surface that doesn't take the finish, a section that takes longer than planned, materials that cost more than the operator estimated. If something unexpected appears, the buffer absorbs it and the buyer doesn't see a variation invoice. If nothing does, the buyer has paid for cover that became the operator's margin.
+*Buffer for the unexpected.* Some expensive quotes carry a 10-20% contingency. They have priced for the job that may show up rather than just the one written down: a surface that doesn't take the finish, a section that takes longer than planned, materials that cost more than the operator estimated. If something unexpected appears, the buffer absorbs it and the buyer doesn't see a variation invoice. If nothing does, the buyer has paid for cover that became the operator's margin.
 
-**Warranty cover.** Some of the price is the cost of standing behind the work after it's done. If something fails inside the warranty window, the operator has already covered the cost of putting it right. For a buyer who values that backstop, it's real protection. For a buyer who would handle any issue themselves anyway, it's cover they may not use.
+*Warranty cover.* Some of the price is the cost of standing behind the work after it's done. If something fails inside the warranty window, the operator has already covered the cost of putting it right. For a buyer who values that backstop, it's real protection. For a buyer who would handle any issue themselves anyway, it's cover they may not use.
 
-**Follow-up access.** Part of the price buys the relationship: the same operator picking up the phone for the next thing, prioritising the buyer because they have been a paying customer. Worth a lot to a buyer who will have more work over time. Worth little to a one-off buyer.
+*Follow-up access.* Part of the price buys the relationship: the same operator picking up the phone for the next thing, prioritising the buyer because they have been a paying customer. Worth a lot to a buyer who will have more work over time. Worth little to a one-off buyer.
 
-**Overhead and brand premium.** Some of the price covers the cost of being a larger or more established business: premium location, marketing spend, brand position, layers of staff. The work that lands at the buyer's door is often comparable to a leaner operator's; the cost of the business behind it is higher.
+*Overhead and brand premium.* Some of the price covers the cost of being a larger or more established business: premium location, marketing spend, brand position, layers of staff. The work that lands at the buyer's door is often comparable to a leaner operator's; the cost of the business behind it is higher.
 
 ## Questions that reveal what the price is hiding
 
