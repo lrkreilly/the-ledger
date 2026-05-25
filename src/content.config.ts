@@ -48,6 +48,7 @@ const articles = defineCollection({
         )
         .min(1, 'Paper Trail requires at least one basis entry.'),
       limits: z.string().min(1, 'Paper Trail requires limits.'),
+      timeSpent: z.string().optional(),
       updates: z
         .array(
           z.object({
