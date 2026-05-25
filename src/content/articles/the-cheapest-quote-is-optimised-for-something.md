@@ -34,41 +34,39 @@ Some scope ambiguity is unavoidable. Some is the buyer's responsibility. Some is
 
 The cheapest quote is not automatically wrong. Sometimes it is the right answer. An operator with low overhead, a tight route that day, an apprentice who needs hours, or simply a different definition of "good enough" can produce a number that is genuinely lower without anything being hidden. Cheap can mean efficient. It can mean honest. It can mean a business operating at a leaner cost base than its competitors. Treating every low quote as suspect is its own kind of lazy thinking.
 
-The expensive quote is not automatically right either, although sometimes the high number is the right answer. A business that pays its tradespeople properly, uses better materials, carries proper insurance, and stands behind its work financially produces a number that is genuinely higher without anything being inflated. Expensive can mean thorough. It can mean professional-grade. It can mean a business that has the margin to do the job properly the first time. It can also mean overhead, brand premium, a fully booked schedule that doesn't really need the work, or the cost of warranty cover the buyer doesn't actually need. Treating every high quote as price gouging is its own kind of lazy thinking.
+The expensive quote is not automatically right either, although sometimes the high number is the right answer. A business that pays its tradespeople properly, uses better materials, carries proper insurance, and stands behind its work financially produces a number that is genuinely higher without anything being inflated. Expensive can mean thorough. It can mean professional-grade. It can mean a business that has the margin to do the job properly the first time. It can also mean overhead, brand premium, a fully booked schedule that doesn't really need the work, or the cost of warranty cover the buyer doesn't actually need. Treating every high quote as price gouging is also lazy thinking.
 
-The premise behind a useful comparison is not "which one is fair" but rather "what is each of these prices built to do." That premise is part of [how The Ledger reads decisions like this](/how-the-ledger-works): not as evidence of greed or honesty, but as a structure that can be inspected.
+The premise behind a useful comparison is not "which one is fair" but rather "what each price is built to do." That premise is part of [how The Ledger reads decisions like this](/how-the-ledger-works): not as evidence of greed or honesty, but as a structure that can be inspected.
 
 ## What cheap quotes are often optimised for
 
-A cheaper quote is usually optimised for one or more of the following. None of these are bad on their own. Some are good. Some only matter in particular situations.
+None of these are automatically good or bad. Some are real value, some are corners cut, and which is which depends on the job.
 
-*Speed.* The operator is in and out the same day. The job is treated as transactional. This is the right approach when the work is genuinely small and the consequences of any error are recoverable.
+**Speed.** The operator is in and out the same day. For a buyer whose priority is speed and whose job is simple enough to fit a half-day window, this is exactly what they want. For a buyer whose job needs care, speed can mean the operator left before the work was done properly.
 
-*Low overhead.* A sole trader without a van wrap, a receptionist, or an office is genuinely cheaper to run than a larger operation. That cost saving is real and gets passed on. It is not a hidden corner being cut. It is a different business model.
+**Volume.** The operator runs many small jobs at standard rates. Each job gets the same treatment regardless of what the specific job actually needs. Fine when the job is genuinely standard. Less fine when the job has anything unusual about it that gets missed because the operator is on autopilot.
 
-*Narrow scope.* The price is tied to a job defined precisely. Nothing is included that was not asked for, and nothing is anticipated that was not described. This is the right approach when the buyer knows exactly what they want and the work is genuinely as small as it sounds. It becomes a problem when the buyer assumed something fell inside the boundary that did not.
+**Lean operation.** The operator runs with low fixed costs: no office, small crew, basic equipment. The savings get passed to the buyer. The trade-off is that the operator has less buffer when something goes wrong on site.
 
-*Single-visit assumption.* The price assumes everything goes to plan. If something goes wrong (a leak behind the wall, an undersized circuit, a part that doesn't fit), return visits, parts, and time are quoted separately. The cheap price was a price for the easy version of the job.
+**Customer self-management.** The buyer is expected to do part of the work that a fuller-service operator would handle: prep the space, move furniture, be available for access, follow up on issues. Fine for a buyer who would rather pay less and handle the logistics. Not fine for a buyer who assumed those things were included.
 
-*Customer self-management.* The buyer is expected to be available, to clarify scope on the spot, to chase the work, and to absorb the small frustrations of an informal arrangement. That works for some buyers and not for others.
-
-*Volume.* The operator runs many small jobs quickly and depends on doing so. This usually means good speed and decent reliability on common work, and less appetite for the unusual job that doesn't fit the pattern.
+**Quality.** At a low enough price, the math forces compromises. The job has to fit inside the hours the price can pay for. That tends to show up as less prep, fewer coats, lighter sanding, or cheaper materials. The work gets done. Whether it holds up over time is a separate question.
 
 ## What expensive quotes are often optimised for
 
-A more expensive quote is usually optimised for a different set of things. The same rule applies. None of these are automatically good. Some are valuable in some situations and dead weight in others.
+None of these are automatically good or bad. Some are real value, some are standard overhead, and which is which depends on the job.
 
-*Warranty cover.* The price includes the cost of coming back if something goes wrong. Whether that matters depends on what failure looks like. A botched paint job is annoying. A failed waterproofing job is a renovation.
+**Standards and finish.** The expensive quote often prices a more thorough job: more careful prep, better materials, a more experienced crew, higher finish throughout. For a buyer who wants the job done to a high standard and will notice the difference, this is exactly what they're paying for. For a buyer on a job where finish doesn't particularly matter, it's spec they may not need.
 
-*Depth of labour.* More steps, more preparation, better materials, longer time on site. Sometimes this produces a visibly better outcome. Sometimes it produces an outcome the buyer cannot distinguish from the cheaper version.
+**Margin to hold a standard.** The operator has the financial room to slow down when the job needs it, redo what didn't land right, or put the experienced person on the awkward part. Buyers who need that flexibility get real value from it. Buyers whose job goes to plan from start to finish are paying for room that does not end up being used.
 
-*Risk absorption.* The operator has priced in the chance that the job is more complicated than it looks, and will absorb that risk rather than re-quote midway. This has real value on jobs where surprises are likely. It is dead weight on jobs where they are not.
+**Buffer for the unexpected.** Some expensive quotes carry a 10-20% contingency. They have priced for the job that may show up rather than just the one written down: a surface that doesn't take the finish, a section that takes longer than planned, materials that cost more than the operator estimated. If something unexpected appears, the buffer absorbs it and the buyer doesn't see a variation invoice. If nothing does, the buyer has paid for cover that became the operator's margin.
 
-*Margin to hold a standard.* The price includes the financial cushion to maintain practices that look optional from outside: clearer communication on a job, written documentation, the ability to keep good staff, the willingness to refuse work that does not fit, and enough margin to fix a problem properly rather than patch it. None of these are visible on the quote. They are what a higher-margin business is buying for itself, and what the buyer is paying for whether or not it shows up in the deliverable.
+**Warranty cover.** Some of the price is the cost of standing behind the work after it's done. If something fails inside the warranty window, the operator has already covered the cost of putting it right. For a buyer who values that backstop, it's real protection. For a buyer who would handle any issue themselves anyway, it's cover they may not use.
 
-*Follow-up access.* The buyer can call later and reach the same operator, the same business, the same person. For one-off work this rarely matters. For ongoing relationships, like a tradesperson the buyer wants to use again or an accountant who needs context across years, it matters more than the initial price.
+**Follow-up access.** Part of the price buys the relationship: the same operator picking up the phone for the next thing, prioritising the buyer because they have been a paying customer. Worth a lot to a buyer who will have more work over time. Worth little to a one-off buyer.
 
-*Overhead.* Office, staff, marketing, insurance, vehicles, software. Some of this is real value being delivered through structure. Some of it is the cost of a business that is larger than the buyer needs.
+**Overhead and brand premium.** Some of the price covers the cost of being a larger or more established business: premium location, marketing spend, brand position, layers of staff. The work that lands at the buyer's door is often comparable to a leaner operator's; the cost of the business behind it is higher.
 
 ## Questions that reveal what the price is hiding
 
