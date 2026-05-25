@@ -48,6 +48,12 @@ None of these are automatically good or bad. Some are real value, some are corne
 
 *Lean operation.* The operator runs with low fixed costs: no office, small crew, basic equipment. The savings get passed to the buyer. The trade-off is that the operator has less buffer when something goes wrong on site.
 
+*Priced for the brief.* The cheap quote prices the job as described, and nothing more. Anything outside the brief becomes a variation: a surface that needs more prep, a surface that doesn't take the finish, a section that takes longer than estimated, materials that cost more than expected.
+
+On a job where everything goes to plan, the buyer pays the original quote and nothing more. On a job where it does not, the total can climb past what a quote with a built-in buffer would have cost from the start.
+
+That is the trade-off: the buyer avoids paying for problems that may never happen, but carries more of the cost if they do.
+
 *Customer self-management.* The buyer is expected to do part of the work that a fuller-service operator would handle: prep the space, move furniture, be available for access, follow up on issues. Fine for a buyer who would rather pay less and handle the logistics. Not fine for a buyer who assumed those things were included.
 
 *Quality.* At a low enough price, the math forces compromises. The job has to fit inside the hours the price can pay for. That tends to show up as less prep, fewer coats, lighter sanding, or cheaper materials. The work gets done. Whether it holds up over time is a separate question.
