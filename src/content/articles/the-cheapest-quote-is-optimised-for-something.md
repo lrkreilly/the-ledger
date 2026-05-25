@@ -14,9 +14,7 @@ paperTrail:
     - label: "First-principles reasoning about service-business economics: how overhead, warranty exposure, and scope ambiguity translate into price."
   limits: "Does not argue that cheap quotes are bad or expensive ones are better. Does not assess any specific operator, trade, or business. The patterns described are decision prompts, not universal rules; buyers still need to compare scope, proof, warranty, availability, and risk in their own situation. Specific category pricing varies significantly by region and market."
   timeSpent: "Approximately 10 hours from concept to publication, including drafting, revision, structure, and final editorial review."
-  updates:
-    - date: 2026-05-25
-      change: "Added 'What middle quotes often combine' section. Extended cheap-paragraph negative list to acknowledge miscalculation and deposit-driven pricing. Added document-audit bridge to the diagnostic-questions section."
+  updates: []
 ---
 
 > *When two quotes are far apart, the useful question is not which one is "fair". It is what each price has been built to include, avoid, absorb, or leave with you.*
