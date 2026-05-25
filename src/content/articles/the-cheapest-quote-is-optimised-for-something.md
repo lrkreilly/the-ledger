@@ -13,8 +13,10 @@ paperTrail:
     - label: "Familiarity with general consumer-protection guidance on comparing quotes, as pattern rather than citation of any specific source."
     - label: "First-principles reasoning about service-business economics: how overhead, warranty exposure, and scope ambiguity translate into price."
   limits: "Does not argue that cheap quotes are bad or expensive ones are better. Does not assess any specific operator, trade, or business. The patterns described are decision prompts, not universal rules; buyers still need to compare scope, proof, warranty, availability, and risk in their own situation. Specific category pricing varies significantly by region and market."
-  timeSpent: "Approximately 6 hours from concept to publication, including drafting, revision, structure, and final editorial review."
-  updates: []
+  timeSpent: "Approximately 10 hours from concept to publication, including drafting, revision, structure, and final editorial review."
+  updates:
+    - date: 2026-05-25
+      change: "Added 'What middle quotes often combine' section. Extended cheap-paragraph negative list to acknowledge miscalculation and deposit-driven pricing. Added document-audit bridge to the diagnostic-questions section."
 ---
 
 > *When two quotes are far apart, the useful question is not which one is "fair". It is what each price has been built to include, avoid, absorb, or leave with you.*
@@ -33,7 +35,7 @@ Some scope ambiguity is unavoidable. Some is the buyer's responsibility. Some is
 
 ## The cheapest quote is not automatically wrong
 
-The cheapest quote is not automatically wrong. Sometimes it is the right answer. An operator with low overhead, a tight route that day, an apprentice who needs hours, or simply a different definition of "good enough" can produce a number that is genuinely lower without anything being hidden. Cheap can mean efficient. It can mean honest. It can mean a business operating at a leaner cost base than its competitors. It can also mean cutting corners, junior staff doing senior work, or a price the operator will only deliver by skipping things the buyer assumed were included. Treating every low quote as suspect is its own kind of lazy thinking. So is assuming every low quote is a bargain.
+The cheapest quote is not automatically wrong. Sometimes it is the right answer. An operator with low overhead, a tight route that day, an apprentice who needs hours, or simply a different definition of "good enough" can produce a number that is genuinely lower without anything being hidden. Cheap can mean efficient. It can mean honest. It can mean a business operating at a leaner cost base than its competitors. It can also mean cutting corners, junior staff doing senior work, a job that has been miscalculated, a price set low to win the deposit, or a quote the operator will only deliver by skipping things the buyer assumed were included. Treating every low quote as suspect is its own kind of lazy thinking. So is assuming every low quote is a bargain.
 
 The expensive quote is not automatically right either, although sometimes the high number is the right answer. A business that pays its tradespeople properly, uses better materials, carries proper insurance, and stands behind its work financially produces a number that is genuinely higher without anything being inflated. Expensive can mean thorough. It can mean professional-grade. It can mean a business that has the margin to do the job properly the first time. It can also mean overhead, brand premium, a fully booked schedule that doesn't really need the work, or the cost of warranty cover the buyer doesn't actually need. Treating every high quote as price gouging is also lazy thinking. So is assuming every high quote earns its premium.
 
@@ -71,9 +73,19 @@ None of these are automatically good or bad. Some are real value, some are stand
 
 *Overhead and brand premium.* Some of the price covers the cost of being a larger or more established business: premium location, marketing spend, brand position, layers of staff. The work that lands at the buyer's door is often comparable to what a leaner operator would produce; the cost of the business behind it is higher. The trade-off is that a bigger brand also has more to lose from a poor result, which often raises the floor on what the buyer can expect.
 
+## What middle quotes often combine
+
+The middle quote is not a category of its own. It is usually a particular mix of cheap-quote and expensive-quote traits. The buyer's job is to read which traits show up on any specific quote, not assume the middle is automatically the sensible compromise.
+
+Middle quotes typically combine reliable execution without premium standards, some buffer for the unexpected without a full contingency, and basic warranty cover without the longer-tail follow-up of an expensive quote. The operator runs a real business with overhead a cheap operator doesn't carry, but doesn't price for the brand premium of an expensive one.
+
+The mix varies. The buyer reads it the same way they read the cheap and expensive sections above: which of these traits matter on this specific job, and which they're paying for either way.
+
 ## Questions that reveal what the price is hiding
 
 The point of comparing quotes is not to find the right number. It is to make the assumptions inside each quote visible, then decide which set of assumptions matches the actual job. The following questions help with that. They are diagnostic prompts, not a script to read into a phone.
+
+Before asking anything, audit the quote document. Detailed line items, named materials, specific work steps, and explicit exclusions answer many of these questions before any conversation starts. A quote that just says "replace tap: $180" is structurally provisional. A quote that names the brand, the type of valve, the time estimate, and what isn't included is structurally stable. In a busy market where the operator won't sit through a list of questions, the document audit is often what's left.
 
 *What scope is this price for?* Specifically. What is being done, what is not being done, what would trigger a variation. If the quote does not make this clear, the price is provisional.
 
