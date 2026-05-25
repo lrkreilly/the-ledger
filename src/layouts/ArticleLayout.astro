@@ -32,6 +32,7 @@ interface Props {
     method: string;
     basis: BasisItem[];
     limits: string;
+    timeSpent?: string;
     updates: Update[];
   };
   retracted?: Retraction;
@@ -180,6 +181,7 @@ const breadcrumbJsonLd = {
             method={paperTrail.method}
             basis={paperTrail.basis}
             limits={paperTrail.limits}
+            timeSpent={paperTrail.timeSpent}
             updates={paperTrail.updates}
           />
         </div>

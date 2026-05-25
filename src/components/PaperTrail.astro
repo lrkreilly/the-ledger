@@ -13,10 +13,11 @@ interface Props {
   method: string;
   basis: BasisItem[];
   limits: string;
+  timeSpent?: string;
   updates?: Update[];
 }
 
-const { method, basis, limits, updates = [] } = Astro.props;
+const { method, basis, limits, timeSpent, updates = [] } = Astro.props;
 
 const dateFmt = new Intl.DateTimeFormat('en-GB', {
   day: 'numeric',
@@ -53,6 +54,12 @@ const dateFmt = new Intl.DateTimeFormat('en-GB', {
       <dt>Limits</dt>
       <dd>{limits}</dd>
     </div>
+    {timeSpent && (
+      <div class="paper-trail__row">
+        <dt>Time spent</dt>
+        <dd>{timeSpent}</dd>
+      </div>
+    )}
   </dl>
 
   {updates.length > 0 && (
