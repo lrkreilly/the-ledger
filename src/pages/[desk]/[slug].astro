@@ -17,6 +17,24 @@ export async function getStaticPaths() {
 
 const { article, desk } = Astro.props;
 const { Content } = await render(article);
+
+// Word count derived from raw Markdown body for Article.wordCount JSON-LD.
+// Strips fenced code blocks (technical, not prose), inline code, image
+// syntax, and link URLs (keeping link text). Counts whitespace-separated
+// tokens containing at least one word character — filters out punctuation-
+// only tokens and stray Markdown markers.
+function countWords(markdown: string): number {
+  return markdown
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/`[^`]*`/g, '')
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/<[^>]+>/g, '')
+    .split(/\s+/)
+    .filter((t) => t.length > 0 && /\w/.test(t))
+    .length;
+}
+const wordCount = countWords(article.body ?? '');
 ---
 <ArticleLayout
   title={article.data.title}
@@ -29,6 +47,7 @@ const { Content } = await render(article);
   publishDate={article.data.publishDate}
   modifiedDate={article.data.modifiedDate}
   ogImage={article.data.ogImage ?? `/og/${article.data.slug}.png`}
+  wordCount={wordCount}
   paperTrail={article.data.paperTrail}
   retracted={article.data.retracted}
 >

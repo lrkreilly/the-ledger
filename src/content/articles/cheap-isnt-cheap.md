@@ -2,7 +2,7 @@
 title: "Cheap Isn't Cheap"
 slug: "cheap-isnt-cheap"
 desk: "value-and-trade-offs"
-author: "Luke"
+author: "Luke Reilly"
 publishDate: 2026-05-23
 summary: "Sticker price is the cost of the object on the day you bought it. The actual cost arrives in instalments — and the cheap version pays in larger ones."
 paperTrail:

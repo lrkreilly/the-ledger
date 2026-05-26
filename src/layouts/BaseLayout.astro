@@ -19,6 +19,10 @@ interface Props {
   title: string;
   description: string;
   ogImage?: string;
+  // og:image:alt — describes what's actually visible in the OG card. For
+  // article pages we pass the headline (it's the dominant text on the card).
+  // For other pages the default below describes the default OG card.
+  ogImageAlt?: string;
   ogType?: 'website' | 'article';
   trimLeft?: string;
   trimRight?: string;
@@ -32,6 +36,7 @@ const {
   title,
   description,
   ogImage = '/og-default.png',
+  ogImageAlt = 'The Ledger — a decision-quality publication',
   ogType = 'website',
   trimLeft,
   trimRight,
@@ -127,6 +132,9 @@ const jsonLdBlocks = jsonLd
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonicalUrl} />
   <meta property="og:image" content={ogImageUrl} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content={ogImageAlt} />
   <meta property="og:site_name" content="The Ledger" />
   <meta property="og:locale" content="en_GB" />
 
@@ -143,6 +151,7 @@ const jsonLdBlocks = jsonLd
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImageUrl} />
+  <meta name="twitter:image:alt" content={ogImageAlt} />
 
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />

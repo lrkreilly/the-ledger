@@ -2,7 +2,7 @@
 title: "The Cheapest Quote Is Optimised for Something"
 slug: "the-cheapest-quote-is-optimised-for-something"
 desk: "home-and-services"
-author: "Luke"
+author: "Luke Reilly"
 publishDate: 2026-05-24
 summary: "Why three quotes for one job can run from $420 to $1,400, and what the gap is actually showing."
 paperTrail:

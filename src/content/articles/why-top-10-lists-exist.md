@@ -2,7 +2,7 @@
 title: "Why \"Top 10\" Lists Exist"
 slug: "why-top-10-lists-exist"
 desk: "internet-claims"
-author: "Luke"
+author: "Luke Reilly"
 publishDate: 2026-05-09
 summary: "\"Top 10\" lists exist because they rank — and ranking is what search engines, affiliate programmes, and tired readers all reward. The format is the product. The contents are incidental."
 paperTrail:

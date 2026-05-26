@@ -31,10 +31,11 @@ const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   '@id': `${aboutUrl}#person`,
-  // Single-name form matches the byline used in every article frontmatter
-  // ("By Luke") and the publication's editorial register. Formal first/last
-  // breakout (givenName/familyName) can come with PR 7 alongside sameAs.
-  name: 'Luke',
+  // Full name aligns with the byline used in every article frontmatter
+  // ("By Luke Reilly") and is the form Google's Knowledge Graph uses for
+  // entity disambiguation. PR 7 can layer givenName / familyName on top
+  // alongside sameAs / description / knowsAbout when those land.
+  name: 'Luke Reilly',
   url: aboutUrl,
   worksFor: orgRef,
 };

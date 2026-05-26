@@ -2,7 +2,7 @@
 title: "The Cost of Ambiguity"
 slug: "the-cost-of-ambiguity"
 desk: "work-and-standards"
-author: "Luke"
+author: "Luke Reilly"
 publishDate: 2026-05-02
 summary: "Undefined standards do not stay undefined. They get filled in — quietly, inconsistently, and by whoever happens to be doing the work that day. The bill arrives later."
 paperTrail:
