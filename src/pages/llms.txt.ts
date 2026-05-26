@@ -73,6 +73,10 @@ export const GET: APIRoute = async ({ site }) => {
   lines.push('');
   lines.push(`- RSS: ${siteOrigin}/rss.xml`);
   lines.push(`- Sitemap: ${siteOrigin}/sitemap-index.xml`);
+  // llms-full.txt is the same content collection as the per-article .md
+  // endpoints, but packaged as a single Markdown file so AI ingestors that
+  // prefer one fetch over per-URL crawling can grab the whole publication.
+  lines.push(`- Full content (Markdown): ${siteOrigin}/llms-full.txt`);
   lines.push('');
 
   return new Response(lines.join('\n'), {
