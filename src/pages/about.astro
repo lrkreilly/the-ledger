@@ -22,22 +22,37 @@ const aboutPageJsonLd = {
   },
 };
 
-// Minimum-viable Person for Luke. @id is the load-bearing field — Article
-// schemas already reference this id from their inline author block, so the
-// graph stitches as soon as this entity exists. sameAs / description /
-// knowsAbout are deliberately deferred to PR 7 until external profiles and
-// bio copy are available.
+// Full Person entity for Luke. @id matches what every Article inline-author
+// block references, so the enriched entity flows back to every article
+// automatically — no Article-side changes needed.
+//
+// Editorial constraint: description is Ledger-only. Spruce and Abbi are
+// disclosed elsewhere where appropriate (the About page body, individual
+// pieces) but are deliberately not centred in the Ledger's Person schema.
+// The Ledger stands on its own as a publication; any cross-entity linkage
+// between Ledger / Spruce / Abbi gets added as a separate decision.
 const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   '@id': `${aboutUrl}#person`,
-  // Full name aligns with the byline used in every article frontmatter
-  // ("By Luke Reilly") and is the form Google's Knowledge Graph uses for
-  // entity disambiguation. PR 7 can layer givenName / familyName on top
-  // alongside sameAs / description / knowsAbout when those land.
   name: 'Luke Reilly',
   url: aboutUrl,
   worksFor: orgRef,
+  description:
+    'Luke Reilly is the editor of The Ledger, a decision-quality publication about trade-offs, hidden costs, and real-world consequences.',
+  sameAs: ['https://www.linkedin.com/in/luke-reilly-nz/'],
+  knowsAbout: [
+    'Decision quality',
+    'Trade-offs',
+    'Hidden costs',
+    'Home and services',
+    'Service pricing',
+    'Operational standards',
+    'Internet claims',
+    'Editorial standards',
+    'Education technology',
+    'Learning systems',
+  ],
 };
 
 const breadcrumbJsonLd = {
