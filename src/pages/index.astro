@@ -11,10 +11,9 @@ const DESK_ORDER = [
 ] as const;
 
 // Featured desk leads the homepage as a wide card with its latest piece
-// shown alongside. The other four sit below in a 2x2 grid. Currently set
-// to Home & Services because that's where the only completed article lives;
-// flip this single string when the editorial centre of gravity shifts.
-const FEATURED_DESK: typeof DESK_ORDER[number] = 'home-and-services';
+// shown alongside. The other four sit below in a 2x2 grid. Flip this single
+// string when the editorial centre of gravity shifts to a different desk.
+const FEATURED_DESK: typeof DESK_ORDER[number] = 'education-and-learning';
 
 const allDesks = await getCollection('desks');
 const allArticles = await getCollection('articles');
