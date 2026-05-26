@@ -186,14 +186,21 @@ const websiteJsonLd = {
     max-width: 560px;
     margin: 0;
   }
-  /* 3+2 grid for five desks. Bottom row left-aligns (grid default) so the
-     empty slot reads as intentional structure, not a centred 5-card row. */
+  /* 3+2 layout for five desks. Flexbox + wrap + justify-content:center so
+     the bottom row's two cards sit centred under the top row's three. Cards
+     get an explicit flex-basis sized so three + two gaps equal 100% exactly
+     — row 1 stays flush, row 2 centres naturally. */
   .desks__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 72px 56px;
+    justify-content: center;
   }
-  .desk { position: relative; }
+  .desk {
+    position: relative;
+    flex: 0 1 calc((100% - 112px) / 3);
+    min-width: 0;
+  }
   .desk__numeral {
     font-family: var(--serif);
     font-style: italic;
@@ -293,20 +300,22 @@ const websiteJsonLd = {
     letter-spacing: -0.005em;
   }
 
-  /* Tablet: 2 columns. Bottom row will have one card with an empty slot to
-     its right, same intentional-structure read as the 3+2 desktop layout. */
+  /* Tablet: 2 columns. 5 cards → 2 + 2 + 1; the lone third-row card centres
+     because of justify-content on the parent. */
   @media (max-width: 1024px) {
-    .desks__grid { grid-template-columns: repeat(2, 1fr); gap: 56px 48px; }
+    .desks__grid { gap: 56px 48px; }
+    .desk { flex: 0 1 calc((100% - 48px) / 2); }
   }
   @media (max-width: 900px) {
     .hero { padding: 80px 0 72px; }
     .statement { padding: 60px 0; }
   }
   /* Mobile: single column. Add thin dividers between stacked cards — at this
-     viewport, grid spacing alone reads as floating; the rule gives the stack
-     visible structure. Not applied on tablet/desktop where grid gaps work. */
+     viewport, flex gap alone reads as floating; the rule gives the stack
+     visible structure. Not applied on tablet/desktop where the gap works. */
   @media (max-width: 640px) {
-    .desks__grid { grid-template-columns: 1fr; gap: 0; }
+    .desks__grid { gap: 0; }
+    .desk { flex: 0 0 100%; }
     .desks__grid > .desk:not(:last-child) {
       padding-bottom: 40px;
       margin-bottom: 40px;
