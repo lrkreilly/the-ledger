@@ -29,6 +29,6 @@ export async function GET(context) {
       author: article.data.author,
       content: md.render(article.body ?? ''),
     })),
-    customData: '<language>en-gb</language>',
+    customData: '<language>en</language>',
   });
 }
