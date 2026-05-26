@@ -241,21 +241,31 @@ const websiteJsonLd = {
     letter-spacing: -0.005em;
     color: var(--ink);
   }
+  /* Article link: neutral ink colour with a permanent underline rule under
+     the title (matching the publication's prose-link convention — border-
+     bottom in var(--rule) grey, accent on hover). The oxblood signal is
+     reserved for interaction, not the default state. Date stays its small
+     grey label regardless of hover so the metadata reads consistently. */
   .desk__piece {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    color: var(--accent);
+    color: var(--ink);
     text-decoration: none;
-    transition: color 0.15s;
   }
-  .desk__piece:hover { text-decoration: underline; }
   .desk__piece-title {
     font-family: var(--serif);
     font-size: 20px;
     font-weight: 400;
     line-height: 1.25;
     letter-spacing: -0.005em;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 6px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .desk__piece:hover .desk__piece-title {
+    color: var(--accent);
+    border-color: var(--accent);
   }
   .desk__piece-date {
     font-family: var(--sans);
