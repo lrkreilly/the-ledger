@@ -1,11 +1,10 @@
 import type { APIRoute, GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
-import { renderArticleOgImage } from '../../lib/og-image';
+import { renderArticleOgImage } from '../../../lib/og-image';
 
-// Default 16:9 (1200x630) — the primary og:image used by Open Graph, Twitter
-// Cards, and the first entry in the Article JSON-LD image array. URL kept
-// unchanged so anything already in circulation (social shares, RSS, llms.txt)
-// continues to resolve.
+// 4:3 (1200x900) — covers older social card formats and broader image-result
+// eligibility. Same layout as 16:9 with a slightly larger title to fill the
+// extra vertical space.
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const articles = await getCollection('articles');
@@ -24,7 +23,7 @@ export const GET: APIRoute = async ({ props }) => {
   const { article, desk } = props as { article: any; desk: any };
   const png = await renderArticleOgImage(
     { title: article.title, deskName: desk.name, publishDate: article.publishDate },
-    '16-9',
+    '4-3',
   );
   return new Response(png, {
     headers: {

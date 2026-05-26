@@ -126,7 +126,19 @@ const articleJsonLd: Record<string, unknown> = {
   mainEntityOfPage: canonicalUrl,
   citation,
   ...(wordCount ? { wordCount } : {}),
-  ...(ogImage ? { image: new URL(ogImage, Astro.site).href } : {}),
+  // Google Article schema is more eligible for rich-result placements when
+  // image is an array covering multiple aspect ratios (16:9, 4:3, 1:1).
+  // The 16:9 stays first since it remains the og:image / twitter:image
+  // referenced in meta tags.
+  ...(ogImage
+    ? {
+        image: [
+          new URL(ogImage, Astro.site).href,
+          new URL(`/og/${slug}/4-3.png`, Astro.site).href,
+          new URL(`/og/${slug}/square.png`, Astro.site).href,
+        ],
+      }
+    : {}),
 };
 
 if (paperTrail.updates.length > 0) {

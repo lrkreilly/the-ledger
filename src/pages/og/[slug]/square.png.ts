@@ -1,11 +1,12 @@
 import type { APIRoute, GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
-import { renderArticleOgImage } from '../../lib/og-image';
+import { renderArticleOgImage } from '../../../lib/og-image';
 
-// Default 16:9 (1200x630) — the primary og:image used by Open Graph, Twitter
-// Cards, and the first entry in the Article JSON-LD image array. URL kept
-// unchanged so anything already in circulation (social shares, RSS, llms.txt)
-// continues to resolve.
+// 1:1 square (1200x1200) — the variant Google image-rich results and
+// carousel placements consume. Drops the footer row (handled by the helper)
+// so the title has room to breathe inside the taller canvas. URL pattern
+// /og/[slug]/square.png keeps it cleanly separated from the default
+// /og/[slug].png and avoids any literal-suffix routing ambiguity.
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const articles = await getCollection('articles');
@@ -24,7 +25,7 @@ export const GET: APIRoute = async ({ props }) => {
   const { article, desk } = props as { article: any; desk: any };
   const png = await renderArticleOgImage(
     { title: article.title, deskName: desk.name, publishDate: article.publishDate },
-    '16-9',
+    '1-1',
   );
   return new Response(png, {
     headers: {
