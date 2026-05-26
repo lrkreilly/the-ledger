@@ -7,6 +7,7 @@ const DESK_ORDER = [
   'home-and-services',
   'internet-claims',
   'work-and-standards',
+  'education-and-learning',
 ] as const;
 
 const allDesks = await getCollection('desks');
@@ -61,7 +62,7 @@ const description =
     <div class="container">
       <div class="desks__header">
         <p class="desks__intro">
-          Four areas The Ledger writes about — organised by the kind of decision, not the kind of reader.
+          Five areas The Ledger writes about — organised by the kind of decision, not the kind of reader.
         </p>
       </div>
 
@@ -69,11 +70,13 @@ const description =
         {desks.map(({ desk, pieces }) => (
           <article class="desk">
             <p class="desk__numeral">{desk.numeral}</p>
-            <h2 class="desk__name">{desk.name}</h2>
+            <h2 class="desk__name">
+              <a href={`/${desk.slug}/`}>{desk.name}</a>
+            </h2>
             <p class="desk__about">{desk.about}</p>
             <div class="desk__pieces">
               {pieces.length === 0 ? (
-                <p class="desk__empty">Forthcoming.</p>
+                <p class="desk__empty">First piece coming soon.</p>
               ) : (
                 pieces.map((piece) => (
                   <a href={`/${piece.data.desk}/${piece.data.slug}/`} class="desk__piece">
@@ -85,7 +88,6 @@ const description =
                 ))
               )}
             </div>
-            <a href={`/${desk.slug}/`} class="desk__more">View this desk</a>
           </article>
         ))}
       </div>
@@ -169,10 +171,12 @@ const description =
     max-width: 560px;
     margin: 0;
   }
+  /* 3+2 grid for five desks. Bottom row left-aligns (grid default) so the
+     empty slot reads as intentional structure, not a centred 5-card row. */
   .desks__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 72px 72px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 72px 56px;
   }
   .desk { position: relative; }
   .desk__numeral {
@@ -187,42 +191,50 @@ const description =
   .desk__name {
     font-family: var(--serif);
     font-weight: 500;
-    font-size: 36px;
+    font-size: 32px;
     line-height: 1.1;
     letter-spacing: -0.015em;
     margin-bottom: 14px;
-    color: var(--ink);
   }
+  .desk__name a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .desk__name a:hover { text-decoration: underline; }
   .desk__about {
     font-family: var(--serif);
     font-style: italic;
     font-size: 16px;
     line-height: 1.55;
     color: var(--ink-2);
-    margin-bottom: 28px;
+    margin-bottom: 22px;
     max-width: 420px;
   }
+  /* No top border now — the previous internal divider was removed so the
+     card flows: numeral → name → about → article (or empty state). */
   .desk__pieces {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    border-top: 1px solid var(--rule);
-    padding-top: 26px;
   }
   .desk__empty {
     font-family: var(--serif);
-    font-style: italic;
-    font-size: 17px;
-    color: var(--ink-3);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+    color: var(--ink);
   }
   .desk__piece {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    color: var(--ink);
+    color: var(--accent);
+    text-decoration: none;
     transition: color 0.15s;
   }
-  .desk__piece:hover { color: var(--accent); }
+  .desk__piece:hover { text-decoration: underline; }
   .desk__piece-title {
     font-family: var(--serif);
     font-size: 20px;
@@ -237,25 +249,6 @@ const description =
     text-transform: uppercase;
     letter-spacing: 0.16em;
     color: var(--ink-3);
-  }
-  .desk__more {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 24px;
-    font-family: var(--sans);
-    font-size: 12px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    color: var(--ink-2);
-    transition: color 0.15s, gap 0.15s;
-  }
-  .desk__more:hover { color: var(--ink); gap: 12px; }
-  .desk__more::after {
-    content: '→';
-    font-family: var(--serif);
-    font-size: 14px;
   }
 
   .statement {
@@ -275,13 +268,29 @@ const description =
     letter-spacing: -0.005em;
   }
 
+  /* Tablet: 2 columns. Bottom row will have one card with an empty slot to
+     its right, same intentional-structure read as the 3+2 desktop layout. */
+  @media (max-width: 1024px) {
+    .desks__grid { grid-template-columns: repeat(2, 1fr); gap: 56px 48px; }
+  }
   @media (max-width: 900px) {
     .hero { padding: 80px 0 72px; }
-    .desks__grid { grid-template-columns: 1fr; gap: 56px; }
     .statement { padding: 60px 0; }
+  }
+  /* Mobile: single column. Add thin dividers between stacked cards — at this
+     viewport, grid spacing alone reads as floating; the rule gives the stack
+     visible structure. Not applied on tablet/desktop where grid gaps work. */
+  @media (max-width: 640px) {
+    .desks__grid { grid-template-columns: 1fr; gap: 0; }
+    .desks__grid > .desk:not(:last-child) {
+      padding-bottom: 40px;
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--rule);
+    }
   }
   @media (max-width: 480px) {
     .desk__name { font-size: 26px; }
     .desk__piece-title { font-size: 18px; }
+    .desk__empty { font-size: 18px; }
   }
 </style>

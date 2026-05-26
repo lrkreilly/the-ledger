@@ -6,6 +6,7 @@ const DESK_ORDER = [
   'home-and-services',
   'internet-claims',
   'work-and-standards',
+  'education-and-learning',
 ] as const;
 
 const dateFmt = new Intl.DateTimeFormat('en-GB', {

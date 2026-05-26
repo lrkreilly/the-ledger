@@ -6,6 +6,7 @@ const DESK_SLUGS = [
   'home-and-services',
   'internet-claims',
   'work-and-standards',
+  'education-and-learning',
 ] as const;
 
 const desks = defineCollection({
