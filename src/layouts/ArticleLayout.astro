@@ -95,9 +95,20 @@ const articleJsonLd: Record<string, unknown> = {
   inLanguage: 'en',
   isAccessibleForFree: true,
   articleSection: deskName,
-  author: { '@type': 'Person', name: author, url: authorUrl },
+  // Inline author/publisher keep their full field set — Google's rich-results
+  // parser prefers full inline objects on Article — but each also carries an
+  // @id matching the standalone Person on /about/ and Organization defined
+  // in BaseLayout. Graph-aware ingestors stitch the entity by @id; rich
+  // results sees the complete inline definition.
+  author: {
+    '@type': 'Person',
+    '@id': `${authorUrl}#person`,
+    name: author,
+    url: authorUrl,
+  },
   publisher: {
     '@type': 'Organization',
+    '@id': `${siteUrl}#organization`,
     name: 'The Ledger',
     url: siteUrl,
     logo: {

@@ -33,10 +33,25 @@ const dateFmt = new Intl.DateTimeFormat('en-GB', {
 
 const description =
   'The Ledger is a place where decisions get explained honestly — the trade-offs, limits, hidden costs, and real-world consequences most rankings and quick answers skip.';
+
+// WebSite is the publication-level entity. SearchAction deliberately omitted
+// until on-site search exists (Pagefind planned at ~60 articles); declaring
+// it now would point Google at search infrastructure that does not yet exist.
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': new URL('#website', Astro.site).href,
+  name: 'The Ledger',
+  url: new URL('/', Astro.site).href,
+  description: 'A decision-quality publication.',
+  inLanguage: 'en',
+  publisher: { '@id': new URL('#organization', Astro.site).href },
+};
 ---
 <BaseLayout
   title="The Ledger — A decision-quality publication"
   description={description}
+  jsonLd={websiteJsonLd}
 >
 
   <section class="hero">

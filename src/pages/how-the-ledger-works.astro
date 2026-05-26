@@ -3,12 +3,42 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const description =
   'How The Ledger decides what to publish — the position, the desks, the method, and how corrections work.';
+
+const frameworkUrl = new URL('/how-the-ledger-works/', Astro.site).href;
+
+// AboutPage is the right type for this page even though it lives at
+// /how-the-ledger-works/ — schema.org's AboutPage covers "about the
+// publication" content, which is exactly what the framework page is.
+const aboutPageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'How The Ledger Works',
+  description,
+  url: frameworkUrl,
+  inLanguage: 'en',
+  isPartOf: { '@id': new URL('#website', Astro.site).href },
+  publisher: { '@id': new URL('#organization', Astro.site).href },
+  primaryImageOfPage: {
+    '@type': 'ImageObject',
+    url: new URL('/og-default.png', Astro.site).href,
+  },
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).href },
+    { '@type': 'ListItem', position: 2, name: 'How It Works', item: frameworkUrl },
+  ],
+};
 ---
 <BaseLayout
   title="The Ledger — Editorial Framework"
   description={description}
   trimLeft="Editorial framework"
   trimRight="How The Ledger Works · MMXXVI"
+  jsonLd={[aboutPageJsonLd, breadcrumbJsonLd]}
 >
 
   <section class="doc-title" aria-label="Editorial Framework">

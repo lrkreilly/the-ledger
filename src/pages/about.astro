@@ -3,12 +3,57 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const description =
   'The Ledger is a decision-quality publication written by the people behind Spruce. Independent, slow, and uninterested in telling you what to buy.';
+
+const aboutUrl = new URL('/about/', Astro.site).href;
+const orgRef = { '@id': new URL('#organization', Astro.site).href };
+
+const aboutPageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'About The Ledger',
+  description,
+  url: aboutUrl,
+  inLanguage: 'en',
+  isPartOf: { '@id': new URL('#website', Astro.site).href },
+  publisher: orgRef,
+  primaryImageOfPage: {
+    '@type': 'ImageObject',
+    url: new URL('/og-default.png', Astro.site).href,
+  },
+};
+
+// Minimum-viable Person for Luke. @id is the load-bearing field — Article
+// schemas already reference this id from their inline author block, so the
+// graph stitches as soon as this entity exists. sameAs / description /
+// knowsAbout are deliberately deferred to PR 7 until external profiles and
+// bio copy are available.
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${aboutUrl}#person`,
+  // Single-name form matches the byline used in every article frontmatter
+  // ("By Luke") and the publication's editorial register. Formal first/last
+  // breakout (givenName/familyName) can come with PR 7 alongside sameAs.
+  name: 'Luke',
+  url: aboutUrl,
+  worksFor: orgRef,
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).href },
+    { '@type': 'ListItem', position: 2, name: 'About', item: aboutUrl },
+  ],
+};
 ---
 <BaseLayout
   title="About — The Ledger"
   description={description}
   trimLeft="About"
   trimRight="MMXXVI"
+  jsonLd={[aboutPageJsonLd, personJsonLd, breadcrumbJsonLd]}
 >
   <section class="about">
     <div class="container">
