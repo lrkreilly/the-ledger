@@ -42,7 +42,7 @@ A list that does all of this is worth reading. The vast majority of lists do non
 
 Most lists fall into one of six commercial shapes. Knowing which shape a list belongs to is the difference between using it and being used by it.
 
-*Self-ranking.* The business itself publishes a list of its category and places itself first. Optimised for capturing search traffic from queries like *best [trade] in [city]* and converting that traffic into its own sales. The other nine entries are filler. Some are real competitors, named to make the page look credible. Some are companies that have no idea they are on the list.
+*Self-ranking.* The business itself publishes a list of its category and places itself first. Optimised for capturing search traffic from queries like *best [trade] in [city]* and converting that traffic into its own sales. The other nine entries are filler. Some are real competitors, named to make the page look credible. Some are companies that have no idea they are on the list. The page also cheapens the brand it was meant to promote. A reader who looks twice sees a business that would rather grade its own work than be reviewed on it.
 
 *Affiliate revenue.* The publisher earns a commission for every click or purchase made through the page. Optimised for sending the reader to the option that pays the highest commission, not the option that is best. Sometimes disclosed in small print at the bottom of the page. Often not.
 
